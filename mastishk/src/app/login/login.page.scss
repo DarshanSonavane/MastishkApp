@@ -56,10 +56,10 @@
     display: block;
     margin-bottom: 8px;
 }
-.btnFacebook{
+.btnGoogle{
     --background: var(--ion-facebook-btn);
 }
-.btnGoogle{
+.btnFacebook{
     --background: var(--ion-google-btn);
 }
 .btnSocial img{
@@ -69,6 +69,10 @@
 .headingStyle1 h2{
     margin-top: 0;
     margin-bottom: 24px;
+}
+.validationMsg{
+    margin-top: 5px;
+    display: block;
 }
 .error-message{
     color: var(--ion-color-danger);

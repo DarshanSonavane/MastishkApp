@@ -15,13 +15,13 @@
       <div class="formWrap">
         <!-- <ion-label>Username*</ion-label> -->
         <ion-input class="inputField userIcon" formControlName="username" placeholder="Enter Mobile Number" min="10" max="10" type="number" required></ion-input>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.username.errors?.required">
           Username is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
           Please provide valid username.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && (loginForm.controls['username'].hasError('minLength'))">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && (loginForm.controls['username'].hasError('minLength'))">
           Username must contain 10 digits
         </span>
       </div>
@@ -29,10 +29,10 @@
       <div class="formWrap">
         <!-- <ion-label>Password*</ion-label> -->
         <ion-input type="password" class="inputField passwordIcon" formControlName="password" placeholder="Enter password" required></ion-input>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.password.errors?.required">
           Password is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
           Please provide valid password.
         </span>
       </div>
