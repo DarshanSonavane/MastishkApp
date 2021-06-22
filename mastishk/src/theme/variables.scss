@@ -11,6 +11,8 @@
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
 
+
+
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
   --ion-color-secondary-rgb: 61, 194, 255;
@@ -74,6 +76,18 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+    /* Custom theme Color Shade */
+ --ion-primary-btn:  #080854;
+ --ion-primary-outline-btn:  #080854;
+ --ion-color-primary-2: #080854;
+ --background: var(--ion-background-color, #f2f2f2);
+ --primary-color:  #080854;
+ --ion-google-btn:  #3b5998;
+ --ion-facebook-btn:  #eb4132;
+ --ion-bg-color:  #f2f2f2;
+ --color-secondary: #1a1a1a;
+ --color-secondary-lite: #808080;
 }
 
 @media (prefers-color-scheme: dark) {

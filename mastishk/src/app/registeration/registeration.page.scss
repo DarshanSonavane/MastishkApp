@@ -1,0 +1,45 @@
+.content-bg {
+    --background: var(--ion-bg-color);
+}
+.loginWrap {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.fullW{
+    width: 100%;
+}
+.logo{
+    max-width: 120px;
+    margin: 0 auto 40px auto;
+}
+.formWrap{
+    margin-bottom: 16px;
+}
+.inputField{    
+    border-bottom: 1px solid #808080;
+}
+.has-focus{
+    border-color: #1a1a1a;
+   }
+.btncolorprimary {
+    --background: var(--ion-primary-btn);
+  }
+.btnPrimaryOutline {
+    --border-color: var(--ion-primary-outline-btn);
+    --color: var(--ion-color-primary-2);
+}
+.forgotPassword{
+    text-align: center;
+}
+.forgotPassword a{
+    color: var(--ion-color-primary-2);
+    text-decoration: underline;
+}
+.headingStyle1 h2{
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+.error-message{
+    color: var(--ion-color-danger);
+}

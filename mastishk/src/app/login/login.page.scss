@@ -1,0 +1,76 @@
+.content-bg {
+    --background: var(--ion-bg-color);
+}
+.loginWrap {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.fullW{
+    width: 100%;
+}
+.logo{
+    max-width: 120px;
+    margin: 0 auto 40px auto;
+}
+.formWrap{
+    margin-bottom: 16px;
+}
+.inputField{
+    padding: 0px;
+    border-bottom: 1px solid #808080;
+}
+.has-focus{
+    border-color: #1a1a1a;
+}
+.userIcon{
+    background: url(../../assets/user.svg) no-repeat 10px center;
+    padding: 0px 0 0px 35px !important;
+}
+.passwordIcon{
+    background: url(../../assets/lock.svg) no-repeat 10px center;
+    padding: 0px 0 0px 35px !important;
+}
+.btncolorprimary {
+    --background: var(--ion-primary-btn);
+  }
+.btnPrimaryOutline {
+    --border-color: var(--ion-primary-outline-btn);
+    --color: var(--ion-color-primary-2);
+}
+.color-secondary{
+    --color: var(--color-secondary);
+}
+.forgotPassword{
+    text-align: center;
+}
+.forgotPassword a {
+    color: #080854;
+    text-decoration: underline;
+}
+.or{
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    margin-bottom: 8px;
+}
+.btnFacebook{
+    --background: var(--ion-facebook-btn);
+}
+.btnGoogle{
+    --background: var(--ion-google-btn);
+}
+.btnSocial img{
+    margin-right: 5px;
+    height: 16px;
+}
+.headingStyle1 h2{
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+.error-message{
+    color: var(--ion-color-danger);
+}
+

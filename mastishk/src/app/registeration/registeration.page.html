@@ -1,9 +1,77 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>registeration</ion-title>
-  </ion-toolbar>
+  <!-- <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar> -->
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding content-bg">
+  <ion-grid class="loginWrap">
+    <form class="fullW" [formGroup]="registrationForm" (ngSubmit)="doRegister()">
+      <div class="logo">
+        <img src="../../assets/logo.svg" />
+      </div>
+      <ion-text color="color-secondary" class="headingStyle1">
+        <h2>Create Account</h2>
+      </ion-text>
+      <!-- <ion-item>
+        <ion-label position="floating">Floating Label</ion-label>
+        <ion-input class="inputField" type="text"></ion-input>
+      </ion-item> -->
+  
+      <div class="formWrap">
+        <!-- <ion-label>Username*</ion-label> -->
+        <ion-input class="inputField" formControlName="firstName" placeholder="First Name" type="text"></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.firstName.errors?.required">
+          First name is required.
+        </span>
+      </div>
+      <div class="formWrap">
+        <!-- <ion-label>Username*</ion-label> -->
+        <ion-input class="inputField" formControlName="lastName" placeholder="Last Name" type="text"></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.lastName.errors?.required">
+          Last name is required.
+        </span>
+      </div>
+      <div class="formWrap">
+        <!-- <ion-label>Username*</ion-label> -->
+        <ion-input class="inputField" formControlName="email" placeholder="Email" type="text"></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+          Email is required.
+        </span>
+      </div>
+      <div class="formWrap">
+        <!-- <ion-label>Username*</ion-label> -->
+        <ion-input class="inputField" formControlName="mobileNumber" placeholder="Mobile Number" type="Number"></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.mobileNumber.errors?.required">
+          Mobile number is required.
+        </span>
+      </div>
+      <div class="formWrap">
+        <!-- <ion-label>Username*</ion-label> -->
+        <ion-input class="inputField" formControlName="password" placeholder="Password" type="password"></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+          Password is required.
+        </span>
+      </div>
+      <div class="formWrap">
+        <!-- <ion-label>Password*</ion-label> -->
+        <ion-input type="password" class="inputField" formControlName="confirmPassword" placeholder="Confirm password"></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.confirmPassword.errors?.required">
+          Password is required.
+        </span>
+      </div>
+      <div class="formWrap">
+        <ion-button class="button-round btncolorprimary" type="submit" expand="full" >Sign Up</ion-button>
+      </div>
+      <!-- <div class="formWrap">
+      <ion-button class="button-round btnPrimaryOutline blueColor" expand="full" fill="outline">Create Account</ion-button>
+    </div> -->
 
+    <ion-row>
+      <ion-col class="formWrap forgotPassword">
+        Already have an Account? <a class="" (click)="goToLogin()">Sign in</a>        
+      </ion-col>
+    </ion-row>
+    </form>
+  </ion-grid>
 </ion-content>
