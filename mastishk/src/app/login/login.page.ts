@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import { AppServiceService } from '../app-service.service'
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,11 @@ import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
   isSubmitted = false;
-  constructor(private router : Router , public formBuilder: FormBuilder) {}
+  constructor(private router : Router , public formBuilder: FormBuilder , private service : AppServiceService) {}
 
   ngOnInit() {// /^\d{10}$/g
     this.loginForm = this.formBuilder.group({
-      username : ['', [Validators.required, Validators.pattern('^[0-9]+$') ,Validators.minLength(10)]],
+      userName : ['', [Validators.required, Validators.pattern('^[0-9]+$') ,Validators.minLength(10)]],
       password : ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}'), Validators.minLength(8)]]
     })
   }
@@ -37,7 +38,14 @@ export class LoginPage implements OnInit {
       console.log('Please provide all the required values!')
       return false;
     }else {
+      this.service.doLogin(this.loginForm.value).subscribe((res)=>{
+        console.log(res);
+      })
       console.log(this.loginForm.value)
     }
+  }
+
+  goToUserProfile(){
+    this.router.navigate(['/user-profile']);
   }
 }
