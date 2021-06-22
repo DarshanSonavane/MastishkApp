@@ -14,14 +14,14 @@
       </ion-text>
       <div class="formWrap">
         <!-- <ion-label>Username*</ion-label> -->
-        <ion-input class="inputField userIcon" formControlName="username" placeholder="Enter Mobile Number" min="10" max="10" type="number" required></ion-input>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
+        <ion-input class="inputField userIcon" formControlName="userName" placeholder="Enter Mobile Number" min="10" max="10" type="number" required></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.userName.errors?.required">
           Username is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.userName.errors?.pattern">
           Please provide valid username.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && (loginForm.controls['username'].hasError('minLength'))">
+        <span class="error-message ion-padding" *ngIf="isSubmitted && (loginForm.controls['userName'].hasError('minLength'))">
           Username must contain 10 digits
         </span>
       </div>
@@ -56,7 +56,7 @@
 
       <ion-row>        
         <ion-col>
-          <ion-button class="button-round btncolorprimary btnSocial btnGoogle" expand="block">
+          <ion-button class="button-round btncolorprimary btnSocial btnGoogle" (click)="goToUserProfile()" expand="block">
             <img src="../../assets/google.svg" /> Google
           </ion-button>
         </ion-col>
