@@ -1,20 +1,121 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user-profile</ion-title>
+    <ion-title>User Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <IonCard>
-    <IonItem>
-      <IonIcon icon={pin} slot="start" />
-      <IonLabel>ion-item in a card, icon left, button right</IonLabel>
-      <IonButton fill="outline" slot="end">View</IonButton>
-    </IonItem>
+<ion-content class="ion-padding content-bg">
 
-    <IonCardContent>
-      This is content, without any paragraph or header tags,
-      within an ion-cardContent element.
-</IonCardContent>
-  </IonCard>
-</ion-content>
+  <label class="cardLabel color-red">
+    <img src="../../assets/user-red.svg" /><span>General Information</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">
+     <div class="inputWrap">
+       <ion-input class="inputField" placeholder="Name" type="text" required></ion-input>
+      </div>
+     <div class="inputWrap">
+       <ion-input class="inputField" placeholder="Age" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Gender" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Educational Qualification" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Occupation" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Marital Status" type="text" required></ion-input>
+       </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <label class="cardLabel color-blue">
+    <img src="../../assets/home.svg" /><span>Place of Residence</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">  
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="District" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Residence Type" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Family Income (Yearly)" type="text" required></ion-input>
+      </div>    
+    </ion-card-content>
+  </ion-card>
+  
+  <label class="cardLabel color-green">
+    <img src="../../assets/parameter.svg" /><span>Vital Parameters</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Pulse Rate" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Blood Pressure" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Any Disability" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Co-Morbidities" type="text" required></ion-input>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <label class="cardLabel color-orange">
+    <img src="../../assets/body-mass.svg" /><span>Body Mass Index(BMI)</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Weight (Kg)" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Height(cm)" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Menstrual Cycle" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Last Menstrual Period" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Duration of Period" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Length of period cycle" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Handedness" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="Do you require any support while walking/ moving (eg.stick,wheelchair)" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <div class="btmBtnWrap">
+    <ion-button class="button-round btncolorprimary blueColor">Save</ion-button>
+  </div>
+  </ion-content>
