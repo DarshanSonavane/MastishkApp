@@ -24,12 +24,18 @@
         <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.firstName.errors?.required">
           First name is required.
         </span>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.firstName.errors?.pattern">
+          Please provide valid first name.
+        </span>
       </div>
       <div class="formWrap">
         <!-- <ion-label>Username*</ion-label> -->
         <ion-input class="inputField" formControlName="lastName" placeholder="Last Name" type="text"></ion-input>
         <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.lastName.errors?.required">
           Last name is required.
+        </span>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.lastName.errors?.pattern">
+          Please provide valid last name.
         </span>
       </div>
       <div class="formWrap">
@@ -38,12 +44,18 @@
         <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
           Email is required.
         </span>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+          Please provide valid email.
+        </span>
       </div>
       <div class="formWrap">
         <!-- <ion-label>Username*</ion-label> -->
-        <ion-input class="inputField" formControlName="mobileNumber" placeholder="Mobile Number" type="Number"></ion-input>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.mobileNumber.errors?.required">
+        <ion-input class="inputField" formControlName="contactNumber" placeholder="Mobile Number" type="Number"></ion-input>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.contactNumber.errors?.required">
           Mobile number is required.
+        </span>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.contactNumber.errors?.pattern">
+          Please provide valid mobile number.
         </span>
       </div>
       <div class="formWrap">
@@ -52,12 +64,18 @@
         <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
           Password is required.
         </span>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+          Please provide valid password.
+        </span>
       </div>
       <div class="formWrap">
         <!-- <ion-label>Password*</ion-label> -->
         <ion-input type="password" class="inputField" formControlName="confirmPassword" placeholder="Confirm password"></ion-input>
         <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.confirmPassword.errors?.required">
           Password is required.
+        </span>
+        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.confirmPassword.errors?.pattern">
+          Please provide valid password.
         </span>
       </div>
       <div class="formWrap">

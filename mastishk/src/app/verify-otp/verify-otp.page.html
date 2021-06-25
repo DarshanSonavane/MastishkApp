@@ -1,0 +1,29 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Forgot Your Password?</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="ion-padding content-bg">
+  <ion-grid class="loginWrap">
+    <form class="fullW" [formGroup]="verifyOtpForm" (ngSubmit)="verifyOTP()">
+      <div class="logo">
+        <img src="../../assets/logo.svg" />
+      </div>
+      <ion-text color="color-secondary" class="headingStyle1">
+        <h2>Enter Your OTP</h2>
+      </ion-text>
+      <!-- <ion-text color="color-secondary-lite" class="subTitle">
+        <small>Confirm your email as we’ll send the URL</small>
+      </ion-text> -->
+      <div class="formWrap">
+        <ion-input class="inputField userIcon" formControlName="otp" placeholder="Enter Your OTP" type="number"></ion-input>
+      </div>
+      
+      <div class="formWrap">
+        <ion-button type="submit" class="button-round btncolorprimary" expand="full" >Verify</ion-button>
+      </div>
+    </form>
+  </ion-grid>
+</ion-content>
+

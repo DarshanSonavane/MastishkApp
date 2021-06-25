@@ -1,0 +1,55 @@
+.content-bg {
+    --background: var(--ion-bg-color);
+}
+.loginWrap {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.fullW{
+    width: 100%;
+}
+.logo{
+    max-width: 120px;
+    margin: 0 auto 40px auto;
+}
+.formWrap{
+    margin-bottom: 16px;
+}
+.inputField{
+    padding: 0px;
+    border-bottom: 1px solid #808080;
+}
+.has-focus{
+    border-color: #1a1a1a;
+}
+.userIcon{
+    background: url(../../assets/user.svg) no-repeat 10px center;
+    padding: 0px 0 0px 35px !important;
+}
+.passwordIcon{
+    background: url(../../assets/lock.svg) no-repeat 10px center;
+    padding: 0px 0 0px 35px !important;
+}
+.btncolorprimary {
+    --background: var(--ion-primary-btn);
+  }
+.btnPrimaryOutline {
+    --border-color: var(--ion-primary-outline-btn);
+    --color: var(--ion-color-primary-2);
+}
+.color-secondary{
+    --color: var(--color-secondary);
+}
+.headingStyle1 h2{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.subTitle small{   
+    display: block;
+    margin-bottom: 24px;
+}
+.color-secondary-lite{
+    --color: var(--color-secondary-lite);
+}
+

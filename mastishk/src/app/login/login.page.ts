@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AppServiceService } from '../app-service.service'
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { AppServiceService } from '../app-service.service'
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
   isSubmitted = false;
-  constructor(private router : Router , public formBuilder: FormBuilder , private service : AppServiceService) {}
+  constructor(private router : Router , public formBuilder: FormBuilder , private service : AppServiceService , public toastController: ToastController) {}
 
   ngOnInit() {// /^\d{10}$/g
     this.loginForm = this.formBuilder.group({
@@ -31,6 +32,14 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/forgot-password']);
   }
 
+  async presentToast(message:any) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
+
   doLogin(){
     this.isSubmitted = true;
     if(!this.loginForm.valid){
@@ -39,9 +48,13 @@ export class LoginPage implements OnInit {
       return false;
     }else {
       this.service.doLogin(this.loginForm.value).subscribe((res)=>{
-        console.log(res);
+        if(res['status'] == "200"){
+          this.presentToast(res['status']);
+          this.router.navigate(['/dashboard']);
+        }else {
+          this.presentToast(res['description']);
+        }
       })
-      console.log(this.loginForm.value)
     }
   }
 

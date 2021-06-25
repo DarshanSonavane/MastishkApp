@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { AppServiceService } from '../app-service.service'
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registeration',
@@ -11,7 +13,7 @@ export class RegisterationPage implements OnInit {
   registrationForm : FormGroup;
   isSubmitted = false;
 
-  constructor(private router :Router , public formBuilder: FormBuilder) { }
+  constructor(private router :Router , public formBuilder: FormBuilder , public service :AppServiceService , public toastController : ToastController) { }
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
@@ -21,15 +23,23 @@ export class RegisterationPage implements OnInit {
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])],
-      mobileNumber : ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
+      contactNumber : ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
       // role : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      password : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      confirmPassword : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      password : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}'), Validators.required])],
+      confirmPassword : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}'), Validators.required])],
     })
   }
 
   get errorControl() {
     return this.registrationForm.controls;
+  }
+
+  async presentToast(message:any) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 
   goToLogin(){
@@ -38,12 +48,20 @@ export class RegisterationPage implements OnInit {
 
   doRegister(){
     this.isSubmitted = true;
-    if(!this.registrationForm.valid){
+    /* if(!this.registrationForm.valid){
       console.log('Please provide all the required values!')
       return false;
-    }else {
+    }else { */
+      this.service.doRegister(this.registrationForm.value).subscribe((res)=>{
+        if(res['status'] == "200"){
+          this.presentToast(res['status']);
+          this.router.navigate(['/']);
+        }else{
+          this.presentToast(res['description']);
+        }
+      });
       console.log(this.registrationForm.value)
-    }
+    // }
   }
 
 }
