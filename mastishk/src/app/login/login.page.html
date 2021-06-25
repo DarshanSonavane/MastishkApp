@@ -13,26 +13,24 @@
         <h2>Sign In</h2>
       </ion-text>
       <div class="formWrap">
-        <!-- <ion-label>Username*</ion-label> -->
         <ion-input class="inputField userIcon" formControlName="userName" placeholder="Enter Mobile Number" min="10" max="10" type="number" required></ion-input>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.userName.errors?.required">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.userName.errors?.required">
           Username is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.userName.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.userName.errors?.pattern">
           Please provide valid username.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && (loginForm.controls['userName'].hasError('minLength'))">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && (loginForm.controls['userName'].hasError('minLength'))">
           Username must contain 10 digits
         </span>
       </div>
 
       <div class="formWrap">
-        <!-- <ion-label>Password*</ion-label> -->
         <ion-input type="password" class="inputField passwordIcon" formControlName="password" placeholder="Enter password" required></ion-input>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.password.errors?.required">
           Password is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
           Please provide valid password.
         </span>
       </div>
@@ -42,6 +40,7 @@
       <div class="formWrap">
       <ion-button class="button-round btnPrimaryOutline blueColor" expand="full" fill="outline" (click)="goToSignup()">Create Account</ion-button>
     </div>
+    
     <ion-row>
       <ion-col class="formWrap forgotPassword">
         <a class="" (click)="goToForgotPassword()">Forgot Password?</a>        
@@ -60,8 +59,7 @@
             <img src="../../assets/google.svg" /> Google
           </ion-button>
         </ion-col>
-        <ion-col>
-          
+        <ion-col>          
           <ion-button class="button-round btncolorprimary btnSocial btnFacebook" expand="block">
             <img src="../../assets/facebook.svg" /> Facebook
           </ion-button>
