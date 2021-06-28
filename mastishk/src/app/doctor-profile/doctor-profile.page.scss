@@ -80,7 +80,6 @@
     margin-bottom: 0;
 }
 .card ion-input{
-    font-size: 0.9em;
     --padding-start: 0;
     --padding-end: 0;
     --padding-top: 0px;
@@ -97,4 +96,15 @@
 }
 .btmBtnWrap ion-button {
     min-width: 150px;
+}
+.customSelect, .customTextarea{
+    padding-left: 0;
+    padding-top: 0;
+    --padding-bottom: 5px;
+    border-bottom: 1px solid #f2f2f7;
+    font-size: 14px;
+    color: #000;
+}
+.customTextarea{
+    --padding-right: 0px;
 }
