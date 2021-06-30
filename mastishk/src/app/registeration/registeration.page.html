@@ -41,14 +41,23 @@
         </span>
       </div>
       <div class="formWrap">
-
-        <ion-input class="inputField" formControlName="mobileNumber" placeholder="Mobile Number" type="Number"></ion-input>
-        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.mobileNumber.errors?.required">
+        <ion-input class="inputField" formControlName="contactNumber" placeholder="Mobile Number" type="Number"></ion-input>
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.contactNumber.errors?.required">
           Mobile number is required.
         </span>
         <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.contactNumber.errors?.pattern">
           Please provide valid mobile number.
         </span>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Role" formControlName="roleId">
+          <ion-select-option *ngFor="let r of role" [value]="r.value" value="Y">{{r.name}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Role Type"  formControlName="child">
+          <ion-select-option *ngFor="let rt of roleType" [value]="rt.value" value="Y">{{rt.type}}</ion-select-option>
+        </ion-select>
       </div>
       <div class="formWrap">
         <ion-input class="inputField" formControlName="password" placeholder="Password" type="password"></ion-input>

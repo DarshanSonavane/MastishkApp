@@ -1,33 +1,62 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>User Profile</ion-title>
+    <ion-title>{{ child ? 'Child ' : 'Adult'}} Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding content-bg">
-
+  <form class="fullW" [formGroup]="userProfileForm" (ngSubmit)="updateProfile()">
   <label class="cardLabel color-red">
     <img src="../../assets/user-red.svg" /><span>General Information</span>
   </label>
   <ion-card class="card">  
     <ion-card-content class="cardContent">
      <div class="inputWrap">
-       <ion-input class="inputField" placeholder="Name" type="text" required></ion-input>
+       <ion-input class="inputField" formControlName="firstName" [(ngModel)]="firstName" placeholder="First Name" type="text" required></ion-input>
       </div>
-     <div class="inputWrap">
-       <ion-input class="inputField" placeholder="Age" type="text" required></ion-input>
-      </div>
+      <div class="inputWrap" *ngIf="child">
+        <ion-input class="inputField" formControlName="middleName" [(ngModel)]="middleName" placeholder="Middle Name" type="text" required></ion-input>
+       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Gender" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="lastName" [(ngModel)]="lastName" placeholder="Last Name" type="text" required></ion-input>
+       </div>
+     <div class="inputWrap">
+       <ion-input class="inputField" formControlName="age" [(ngModel)]="age" placeholder="Age" type="text" required></ion-input>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Gender" [(ngModel)]="gender" formControlName="gender" (ionChange)="onGenderChange()">
+          <ion-select-option *ngFor="let g of genders" [value]="g.value">{{g.name}}</ion-select-option>
+        </ion-select>
+      </div>
+       <div class="inputWrap">
+        <ion-input class="inputField" formControlName="education" [(ngModel)]="education" placeholder="Educational Qualification" type="text" required></ion-input>
        </div>
        <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Educational Qualification" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="occuption" [(ngModel)]="occuption" placeholder="Occupation" type="text" required></ion-input>
        </div>
        <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Occupation" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="maritialStatus" [(ngModel)]="maritialStatus" placeholder="Marital Status" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap" *ngIf="child">
+        <ion-input class="inputField" formControlName="fathersName" [(ngModel)]="fathersName" placeholder="Father's Name" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap" *ngIf="child">
+        <ion-input class="inputField" formControlName="fathersOccuption" [(ngModel)]="fathersOccuption" placeholder="Father's Occupation" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap" *ngIf="child">
+        <ion-input class="inputField" formControlName="motherName" [(ngModel)]="motherName" placeholder="Mother Name" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap" *ngIf="child">
+        <ion-input class="inputField" formControlName="mothersOccuption" [(ngModel)]="mothersOccuption" placeholder="Mother's Occuption" type="text" required></ion-input>
        </div>
        <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Marital Status" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="type" [(ngModel)]="type" placeholder="User Type" type="hidden" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField" [(ngModel)]="extra_field1" formControlName="extra_field1" placeholder="Family Income (Yearly)" type="text" required></ion-input>
+      </div>    
+      <div class="inputWrap">
+        <ion-input class="inputField" formControlName="child" [(ngModel)]="child" placeholder="Role Type" type="hidden" required></ion-input>
        </div>
     </ion-card-content>
   </ion-card>
@@ -36,19 +65,23 @@
     <img src="../../assets/home.svg" /><span>Place of Residence</span>
   </label>
   <ion-card class="card">  
-    <ion-card-content class="cardContent">  
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+    <ion-card-content class="cardContent" formGroupName="contactDetails">  
+      <div class="formWrap">
+        <ion-select placeholder="State" [(ngModel)]="state" formControlName="state" (ionChange)="onStateChange()">
+          <ion-select-option *ngFor="let s of stateList" [value]="s.stateId">{{s.stateName}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="District" [(ngModel)]="district" formControlName="district">
+          <ion-select-option *ngFor="let d of districtsForState" [value]="d.districtId" value="Y">{{d.districtName}}</ion-select-option>
+        </ion-select>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="District" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="resident_type" formControlName="resident_type" placeholder="Residence Type" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Residence Type" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="contactId" formControlName="contactId" placeholder="Residence Type" type="hidden" required></ion-input>
       </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Family Income (Yearly)" type="text" required></ion-input>
-      </div>    
     </ion-card-content>
   </ion-card>
   
@@ -56,18 +89,26 @@
     <img src="../../assets/parameter.svg" /><span>Vital Parameters</span>
   </label>
   <ion-card class="card">  
-    <ion-card-content class="cardContent">
+    <ion-card-content class="cardContent" formGroupName="vitalParameters">
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Pulse Rate" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="vitalId" formControlName="vitalId" placeholder="Residence Type" type="hidden" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Blood Pressure" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="pulse_rate" formControlName="pulse_rate" placeholder="Pulse Rate" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Any Disability" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="blood_presure" formControlName="blood_presure" placeholder="Blood Pressure" type="text" required></ion-input>
+      </div>
+      <!-- <div class="inputWrap">
+        <ion-input class="inputField" [(ngModel)]="any_disability" formControlName="any_disability" placeholder="Any Disability" type="text" required></ion-input>
+      </div> -->
+      <div class="formWrap">
+        <ion-select placeholder="Any Disability" [(ngModel)]="any_disability" formControlName="any_disability">
+          <ion-select-option *ngFor="let d of disablites" [value]="d.value">{{d.name}}</ion-select-option>
+        </ion-select>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Co-Morbidities" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="co_morbility" formControlName="co_morbility" placeholder="Co-Morbidities" type="text" required></ion-input>
       </div>
     </ion-card-content>
   </ion-card>
@@ -76,46 +117,57 @@
     <img src="../../assets/body-mass.svg" /><span>Body Mass Index(BMI)</span>
   </label>
   <ion-card class="card">  
-    <ion-card-content class="cardContent">
+    <ion-card-content class="cardContent" formGroupName="massIndexDetails">
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Weight (Kg)" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="massIndexId" formControlName="massIndexId" placeholder="Residence Type" type="hidden" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Height(cm)" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="weight" formControlName="weight" placeholder="Weight (Kg)" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Menstrual Cycle" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="height" formControlName="height" placeholder="Height(cm)" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Last Menstrual Period" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="menstrual_cycle" *ngIf="!isMale" formControlName="menstrual_cycle" placeholder="Menstrual Cycle" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Duration of Period" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="last_menstrual_period" *ngIf="!isMale" formControlName="last_menstrual_period" placeholder="Last Menstrual Period" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Length of period cycle" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="duration_of_period" *ngIf="!isMale" formControlName="duration_of_period" placeholder="Duration of Period" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Handedness" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="length_of_period_cycle" *ngIf="!isMale" formControlName="length_of_period_cycle" placeholder="Length of period cycle" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Do you require any support while walking/ moving (eg.stick,wheelchair)" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="handedness" formControlName="handedness" placeholder="Handedness" type="text" required></ion-input>
+      </div>
+      <!-- <div class="inputWrap">
+        <ion-input class="inputField" [(ngModel)]="is_support_required" formControlName="is_support_required" placeholder="Do you require any support while walking/ moving (eg.stick,wheelchair)" type="text" required></ion-input>
+      </div> -->
+      
+      <div class="formWrap">
+        <ion-select placeholder="Do you require any support while walking/ moving (eg.stick,wheelchair)" [(ngModel)]="is_support_required" formControlName="is_support_required">
+          <ion-select-option *ngFor="let d of disablites" [value]="d.value">{{d.name}}</ion-select-option>
+        </ion-select>
+      </div>
+      
+      <div class="inputWrap">
+        <ion-input class="inputField" [(ngModel)]="normal_walk" formControlName="normal_walk" placeholder="Normal Walk" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="fasial_palsy" formControlName="fasial_palsy" placeholder="Fasial Palsy" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+        <ion-input class="inputField" [(ngModel)]="medical_history" formControlName="medical_history" placeholder="Medical History" type="text" required></ion-input>
       </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
+      <!-- <div class="inputWrap">
+        <ion-input class="inputField" formControlName="fasial_palsy" placeholder="State" type="text" required></ion-input>
+      </div> -->
     </ion-card-content>
   </ion-card>
   <div class="btmBtnWrap">
-    <ion-button class="button-round btncolorprimary blueColor">Save</ion-button>
+    <ion-button type="submit" class="button-round btncolorprimary blueColor">Save</ion-button>
   </div>
+</form>
   </ion-content>
