@@ -41,7 +41,7 @@
         </span>
       </div>
       <div class="formWrap">
-        <ion-input class="inputField" formControlName="contactNumber" placeholder="Mobile Number" type="Number"></ion-input>
+        <ion-input class="inputField" formControlName="contactNumber" placeholder="Mobile Number"  minlength="10" maxlength="10" type="tel"></ion-input>
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.contactNumber.errors?.required">
           Mobile number is required.
         </span>

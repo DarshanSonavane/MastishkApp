@@ -46,7 +46,7 @@ export class RegisterationPage implements OnInit {
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])],
-      contactNumber : ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]*'), Validators.required])],
+      contactNumber : ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]{10}'), Validators.required])],
       roleId : ['', Validators.compose([Validators.required])],
       child:[''],
       password : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}'), Validators.required])],
