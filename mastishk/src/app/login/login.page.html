@@ -13,7 +13,7 @@
         <h2>Sign In</h2>
       </ion-text>
       <div class="formWrap">
-        <ion-input class="inputField userIcon" formControlName="userName" placeholder="Enter Mobile Number" min="10" max="10" type="number" required></ion-input>
+        <ion-input class="inputField userIcon" formControlName="userName" placeholder="Enter Mobile Number" minlength="10" maxlength="10" type="tel" required></ion-input>
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.userName.errors?.required">
           Username is required.
         </span>
