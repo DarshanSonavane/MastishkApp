@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AppServiceService } from '../app-service.service'
-import { ToastController } from '@ionic/angular';
+import { ToastController , MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
   isSubmitted = false;
-  constructor(private router : Router , public formBuilder: FormBuilder , private service : AppServiceService , public toastController: ToastController) {}
+  constructor(private router : Router , public formBuilder: FormBuilder , private service : AppServiceService , public toastController: ToastController , public menu : MenuController) {}
 
   ngOnInit() {// /^\d{10}$/g
     this.loginForm = this.formBuilder.group({
@@ -22,6 +22,10 @@ export class LoginPage implements OnInit {
   }
   get errorControl() {
     return this.loginForm.controls;
+  }
+
+  ionViewWillEnter() {
+    this.menu.enable(false);
   }
 
   goToSignup(){
@@ -50,7 +54,18 @@ export class LoginPage implements OnInit {
       this.service.doLogin(this.loginForm.value).subscribe((res)=>{
         if(res['status'] == "200"){
           this.presentToast(res['status']);
-          this.router.navigate(['/dashboard']);
+          localStorage.setItem("userId", res['userId']);
+          localStorage.setItem("token",res['token']);
+          let userDetails = res['user'];
+          console.log("Type",userDetails);
+          if(userDetails.type == '1'){
+            this.router.navigate(['/user-profile']);
+          }else if(userDetails.type == '2'){
+            // Navigate to doctor profile
+            this.router.navigate(['/doctor-profile']);
+          }else if(userDetails.type == '3'){
+            // Navigate To Health Workers Profile
+          }
         }else {
           this.presentToast(res['description']);
         }
@@ -58,7 +73,13 @@ export class LoginPage implements OnInit {
     }
   }
 
+  
+
   goToUserProfile(){
     this.router.navigate(['/user-profile']);
+  }
+
+  goToDoctorProfile(){
+    this.router.navigate(['/doctor-profile']);
   }
 }

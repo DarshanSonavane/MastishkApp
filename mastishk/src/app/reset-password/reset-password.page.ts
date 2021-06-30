@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AppServiceService} from '../app-service.service'
-import { ToastController } from '@ionic/angular';
+import { ToastController , MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,7 +13,7 @@ export class ResetPasswordPage implements OnInit {
   resetPasswordForm : FormGroup;
   isSubmitted : false;
   userId:any;
-  constructor(private activateRoute : ActivatedRoute ,private router : Router ,public formBuilder: FormBuilder , private service : AppServiceService , private toastController : ToastController ) { }
+  constructor(private activateRoute : ActivatedRoute ,private router : Router ,public formBuilder: FormBuilder , private service : AppServiceService , private toastController : ToastController , public menu : MenuController ) { }
 
   ngOnInit() {// /^\d{10}$/g
     this.userId = this.activateRoute.snapshot.paramMap.get('userId');
@@ -40,5 +40,9 @@ export class ResetPasswordPage implements OnInit {
         this.presentToast(res['body']);
       }
     })
+  }
+
+  ionViewWillEnter() {
+    this.menu.enable(false);
   }
 }
