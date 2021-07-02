@@ -51,7 +51,9 @@ export class LoginPage implements OnInit {
       console.log('Please provide all the required values!')
       return false;
     }else {
+      this.service.showLoader();
       this.service.doLogin(this.loginForm.value).subscribe((res)=>{
+        this.service.hideLoader();
         if(res['status'] == "200"){
           this.presentToast(res['status']);
           localStorage.setItem("userId", res['userId']);
@@ -69,6 +71,8 @@ export class LoginPage implements OnInit {
         }else {
           this.presentToast(res['description']);
         }
+      },error=>{
+        this.service.hideLoader();
       })
     }
   }

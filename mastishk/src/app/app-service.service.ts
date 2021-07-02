@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppServiceService {
   baseUrl = "http://ec2-34-219-34-218.us-west-2.compute.amazonaws.com:8080/mastishq/"
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private loadingCtrl: LoadingController) { }
   
+  showLoader() {
+    this.loadingCtrl.create({ message: "" }).then((res) => {
+      res.present();
+    })
+  }
+
+  hideLoader() {
+    this.loadingCtrl.dismiss();
+  }
+
   doLogin = (data:any)=>{
     let url = this.baseUrl + "utils/loginUser";
     return this.http.post(url,data);

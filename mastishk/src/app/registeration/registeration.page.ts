@@ -77,13 +77,17 @@ export class RegisterationPage implements OnInit {
       console.log('Please provide all the required values!')
       return false;
     }else { */
+      this.service.showLoader();
       this.service.doRegister(this.registrationForm.value).subscribe((res)=>{
+        this.service.hideLoader();
         if(res['status'] == "200"){
           this.presentToast(res['status']);
           this.router.navigate(['/']);
         }else{
           this.presentToast(res['description']);
         }
+      },error=>{
+        this.service.hideLoader();
       });
       console.log(this.registrationForm.value)
     // }

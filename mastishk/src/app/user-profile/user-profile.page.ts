@@ -137,7 +137,9 @@ export class UserProfilePage implements OnInit {
     let header =  {
       'Authorization' : token
     }
+    this.service.showLoader();
     this.service.getUserDetailsByUserId(userId , header).subscribe((res)=>{
+      this.service.hideLoader();
       if(res['status']=='200'){
         console.log(res['body']);
 
@@ -184,6 +186,8 @@ export class UserProfilePage implements OnInit {
           this.onStateChange();
         }
       }
+    },error=>{
+      this.service.hideLoader();
     })
   }
 
@@ -221,11 +225,15 @@ export class UserProfilePage implements OnInit {
     let header =  {
       'Authorization' : token
     }
+    this.service.showLoader();
     this.service.updateUserDetails(this.userProfileForm.value, header).subscribe((res)=>{
+      this.service.hideLoader();
       if(res){
         // Navigate to Dashboard
         this.router.navigate(['/dashboard']);
       }
+    },error=>{
+      this.service.hideLoader();
     })
     console.log(this.userProfileForm.value);
   }

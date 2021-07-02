@@ -32,13 +32,17 @@ export class ResetPasswordPage implements OnInit {
   }
 
   resetPassword(){
+    this.service.showLoader();
     this.service.resetPassword(this.resetPasswordForm.value,this.userId).subscribe((res)=>{
+      this.service.hideLoader();
       if(res['status'] == "200"){
         this.presentToast(res['body']);
         this.router.navigate(['/']);
       }else{
         this.presentToast(res['body']);
       }
+    },error=>{
+      this.service.hideLoader();
     })
   }
 

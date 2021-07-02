@@ -35,7 +35,9 @@ export class ForgotPasswordPage implements OnInit {
   forgotPassword(){
     console.log("Here");
     this.isSubmitted = true;
+    this.service.showLoader();
     this.service.forgotPassword(this.forgotPasswordForm.value).subscribe((res)=>{
+      this.service.hideLoader();
       if(res['status'] == "200"){
         let userId = res['body'];
         this.presentToast('OTP sent to your resistered email id');
@@ -43,6 +45,8 @@ export class ForgotPasswordPage implements OnInit {
       }else {
         this.presentToast(res['body']);
       }
+    },error=>{
+      this.service.hideLoader();
     })
   }
 

@@ -33,12 +33,16 @@ export class VerifyOtpPage implements OnInit {
 
   verifyOTP(){
     this.isSubmitted = true;
+    this.service.showLoader();
     this.service.verifyOtp(this.verifyOtpForm.value,this.userId).subscribe((res)=>{
+      this.service.hideLoader();
       if(res['status'] == "200"){
         this.router.navigate(['/reset-password' , this.userId]);
       }else{
         this.presentToast(res['body']);
       }
+    },error=>{
+      this.service.hideLoader();
     })
   }
 
