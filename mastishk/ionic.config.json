@@ -1,5 +1,7 @@
 {
   "name": "mastishk",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
