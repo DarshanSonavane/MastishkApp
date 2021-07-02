@@ -1,0 +1,113 @@
+.content-bg {
+    --background: var(--ion-bg-color);
+}
+.loginWrap {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.fullW{
+    width: 100%;
+}
+.formWrap{
+    margin-bottom: 16px;
+}
+.inputField{
+    padding: 0px;
+    border-bottom: 1px solid #808080;
+}
+.has-focus{
+    border-color: #1a1a1a;
+}
+.passwordIcon{
+    background: url(../../assets/lock.svg) no-repeat 10px center;
+    padding: 0px 0 0px 35px !important;
+}
+.btncolorprimary {
+    --background: var(--ion-primary-btn);
+  }
+.btnPrimaryOutline {
+    --border-color: var(--ion-primary-outline-btn);
+    --color: var(--ion-color-primary-2);
+}
+.color-secondary{
+    --color: var(--color-secondary);
+}
+.validationMsg{
+    margin-top: 5px;
+    display: block;
+}
+.error-message{
+    color: var(--ion-color-danger);
+}
+
+// user Profile
+.card{
+    margin: 0 0 16px 0;
+}
+.cardContent {
+    padding: 1rem;
+}
+.cardLabel{
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+.cardLabel img{
+    margin-right: 5px;
+}
+.cardLabel span{
+    padding-top: 2px;
+    line-height: 1;
+}
+.color-red{
+    color: var(--color-red);
+}
+.color-blue{
+    color: var(--color-blue);
+}
+.color-green{
+    color: var(--color-green);
+}
+.color-orange{
+    color: var(--color-orange);
+}
+.inputWrap{
+    margin-bottom: 10px;
+}
+.inputWrap:last-child{
+    margin-bottom: 0;
+}
+.card ion-input{
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0px;
+    --padding-bottom: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    border-color: #f2f2f7;
+    font-size: 14px;
+    --placeholder-opacity: .5;
+}
+.btmBtnWrap{
+    text-align: center;
+}
+.btmBtnWrap ion-button {
+    min-width: 150px;
+}
+.customSelect, .customTextarea{
+    padding-left: 0;
+    --padding-top: 0px;
+    --padding-bottom: 5px;
+    border-bottom: 1px solid #f2f2f7;
+    font-size: 14px;
+    color: #000;
+    --placeholder-color: #797979;
+    --placeholder-opacity: .5;
+}
+.customTextarea{
+    --padding-right: 0px;
+}
