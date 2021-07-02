@@ -43,3 +43,12 @@
 .error-message{
     color: var(--ion-color-danger);
 }
+.customSelect, .customTextarea{
+    padding-left: 0;
+    --padding-bottom: 5px;
+    border-bottom: 1px solid #9d9d9d;
+    font-size: 14px;
+    color: #000;
+    --placeholder-color: #797979;
+    --placeholder-opacity: 1
+}

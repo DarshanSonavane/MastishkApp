@@ -80,7 +80,6 @@
     margin-bottom: 0;
 }
 .card ion-input{
-    font-size: 0.9em;
     --padding-start: 0;
     --padding-end: 0;
     --padding-top: 0px;
@@ -91,6 +90,17 @@
     padding-bottom: 5px;
     border-color: #f2f2f7;
     font-size: 14px;
+    --placeholder-opacity: .5;
+}
+.customSelect, .customTextarea, ion-select{
+    padding-left: 0;
+    --padding-top: 0px;
+    --padding-bottom: 5px;
+    border-bottom: 1px solid #f2f2f7;
+    font-size: 14px;
+    color: #000;
+    --placeholder-color: #797979;
+    --placeholder-opacity: .5;
 }
 .btmBtnWrap{
     text-align: center;

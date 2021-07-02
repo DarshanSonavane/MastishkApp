@@ -49,15 +49,11 @@
        <div class="inputWrap" *ngIf="child">
         <ion-input class="inputField" formControlName="mothersOccuption" [(ngModel)]="mothersOccuption" placeholder="Mother's Occuption" type="text" required></ion-input>
        </div>
-       <div class="inputWrap">
-        <ion-input class="inputField" formControlName="type" [(ngModel)]="type" placeholder="User Type" type="hidden" required></ion-input>
-       </div>
+        <ion-input class="" formControlName="type" [(ngModel)]="type" placeholder="User Type" type="hidden" required></ion-input>
        <div class="inputWrap">
         <ion-input class="inputField" [(ngModel)]="extra_field1" formControlName="extra_field1" placeholder="Family Income (Yearly)" type="text" required></ion-input>
       </div>    
-      <div class="inputWrap">
-        <ion-input class="inputField" formControlName="child" [(ngModel)]="child" placeholder="Role Type" type="hidden" required></ion-input>
-       </div>
+        <ion-input formControlName="child" [(ngModel)]="child" placeholder="Role Type" type="hidden" required></ion-input>
     </ion-card-content>
   </ion-card>
   
@@ -79,9 +75,7 @@
       <div class="inputWrap">
         <ion-input class="inputField" [(ngModel)]="resident_type" formControlName="resident_type" placeholder="Residence Type" type="text" required></ion-input>
       </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" [(ngModel)]="contactId" formControlName="contactId" placeholder="Residence Type" type="hidden" required></ion-input>
-      </div>
+        <ion-input [(ngModel)]="contactId" formControlName="contactId" placeholder="Residence Type" type="hidden" required></ion-input>
     </ion-card-content>
   </ion-card>
   
@@ -90,9 +84,7 @@
   </label>
   <ion-card class="card">  
     <ion-card-content class="cardContent" formGroupName="vitalParameters">
-      <div class="inputWrap">
-        <ion-input class="inputField" [(ngModel)]="vitalId" formControlName="vitalId" placeholder="Residence Type" type="hidden" required></ion-input>
-      </div>
+      <ion-input [(ngModel)]="vitalId" formControlName="vitalId" placeholder="Residence Type" type="hidden" required></ion-input>
       <div class="inputWrap">
         <ion-input class="inputField" [(ngModel)]="pulse_rate" formControlName="pulse_rate" placeholder="Pulse Rate" type="text" required></ion-input>
       </div>
@@ -118,9 +110,7 @@
   </label>
   <ion-card class="card">  
     <ion-card-content class="cardContent" formGroupName="massIndexDetails">
-      <div class="inputWrap">
-        <ion-input class="inputField" [(ngModel)]="massIndexId" formControlName="massIndexId" placeholder="Residence Type" type="hidden" required></ion-input>
-      </div>
+        <ion-input [(ngModel)]="massIndexId" formControlName="massIndexId" placeholder="Residence Type" type="hidden" required></ion-input>
       <div class="inputWrap">
         <ion-input class="inputField" [(ngModel)]="weight" formControlName="weight" placeholder="Weight (Kg)" type="text" required></ion-input>
       </div>

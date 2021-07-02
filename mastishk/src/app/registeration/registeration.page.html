@@ -50,12 +50,12 @@
         </span>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Role" formControlName="roleId">
+        <ion-select class="customSelect" placeholder="Role" formControlName="roleId">
           <ion-select-option *ngFor="let r of role" [value]="r.value" value="Y">{{r.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Role Type"  formControlName="child">
+        <ion-select class="customSelect" placeholder="Role Type" formControlName="child">
           <ion-select-option *ngFor="let rt of roleType" [value]="rt.value" value="Y">{{rt.type}}</ion-select-option>
         </ion-select>
       </div>
