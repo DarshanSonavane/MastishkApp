@@ -1,9 +1,202 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>child-profile</ion-title>
+    <ion-title>Child Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding content-bg">
+  <form class="fullW">
+  <label class="cardLabel color-red">
+    <img src="../../assets/user-red.svg" /><span>General Information</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">
+     <div class="inputWrap">
+       <ion-input class="inputField" placeholder="Name" type="text" required></ion-input>
+      </div>
+     <div class="inputWrap">
+       <ion-input class="inputField" placeholder="Age" type="text" required></ion-input>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Gender">
+          <ion-select-option>Male</ion-select-option>
+          <ion-select-option>Female</ion-select-option>
+        </ion-select>
+      </div>
+       <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="School" type="text" required></ion-input>
+       </div>
+       <div class="formWrap">
+        <ion-select placeholder="Type Of School">
+          <ion-select-option>Special School</ion-select-option>
+          <ion-select-option>Normal School</ion-select-option>
+        </ion-select>
+      </div>
+       <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="Class" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="Mother's Name" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="Mother's Occupation" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="Father's Name" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="Father's Occupation" type="text" required></ion-input>
+       </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <label class="cardLabel color-blue">
+    <img src="../../assets/home.svg" /><span>Address</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent" formGroupName="contactDetails">  
+      <div class="formWrap">
+        <ion-select placeholder="State">
+          <ion-select-option>State Name</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="District">
+          <ion-select-option>District Name</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Resident Type">
+          <ion-select-option>Rural</ion-select-option>
+          <ion-select-option>Urban</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="Languages Known" type="text" required></ion-input>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Family Income">
+          <ion-select-option>Below 10 lakhs</ion-select-option>
+          <ion-select-option>10-20 lakhs</ion-select-option>
+          <ion-select-option>20 -30 lakhs</ion-select-option>
+          <ion-select-option>Above 30 lakhs</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <label class="cardLabel color-green">
+    <img src="../../assets/parameter.svg" /><span>Biological Functions</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">
+      <div class="formWrap">
+        <ion-select placeholder="Sleep">
+          <ion-select-option>Normal (Sleeps for atleast 8 hrs, fixed time of sleep and doesnt wake up during the night)</ion-select-option>
+          <ion-select-option>Sleeping more than ususal</ion-select-option>
+          <ion-select-option>Sleeping less than usual</ion-select-option>
+          <ion-select-option>Wakes up frequently during night</ion-select-option>
+          </ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Appetite">
+          <ion-select-option>Normal</ion-select-option>
+          <ion-select-option>Eating more than usual</ion-select-option>
+          <ion-select-option>Eating less than usual</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <label class="cardLabel color-orange">
+    <img src="../../assets/body-mass.svg" /><span>Pre-natal History</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">
+      <div class="formWrap">
+        <ion-select placeholder="Mother exposed to trauma like X rays,drugs">
+          <ion-select-option>Yes</ion-select-option>
+          <ion-select-option>NO</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Mother suffered from any infectious disease">
+          <ion-select-option>Yes</ion-select-option>
+          <ion-select-option>NO</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Failed abortion attempt made">
+          <ion-select-option>Yes</ion-select-option>
+          <ion-select-option>NO</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Mother suffered from emotional trauma">
+          <ion-select-option>Yes</ion-select-option>
+          <ion-select-option>NO</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
-</ion-content>
+  <label class="cardLabel color-orange">
+    <img src="../../assets/body-mass.svg" /><span>Post-natal History</span>
+  </label>
+  <ion-card class="card">  
+    <ion-card-content class="cardContent">
+      <div class="formWrap">
+        <ion-select placeholder="Term of Delivery">
+          <ion-select-option>Full Term (37 weeks/9months)</ion-select-option>
+          <ion-select-option>Pre Term (28-32 weeks/7-8 months)</ion-select-option>
+          <ion-select-option>Post Term (40-42 weeks/10 months)</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Place of Delivery">
+          <ion-select-option>Hospital</ion-select-option>
+          <ion-select-option>Home</ion-select-option>
+          <ion-select-option>Other</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Type of Delivery">
+          <ion-select-option>Normal(Vaginal Birth)</ion-select-option>
+          <ion-select-option>Ceaserian(Surgical delivery)</ion-select-option>
+          <ion-select-option>Instrumental(Forceps delivery)</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Birth weight">
+          <ion-select-option>Normal(2.5-2.9 Kgs)</ion-select-option>
+          <ion-select-option>Above normal(3-4.5 Kgs)</ion-select-option>
+          <ion-select-option>Below Normal( Less than 2.5 Kgs)</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="formWrap">
+        <ion-select placeholder="Birth Cry">
+          <ion-select-option>Present(Immediately cried)</ion-select-option>
+          <ion-select-option>Delayed(Cried after some time)</ion-select-option>
+          <ion-select-option>Absent(No birth cry)</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="inputWrap">
+        <ion-input class="inputField"  placeholder="Complications during delivery, if any" type="text" required></ion-input>
+      </div>
+
+      <div class="formWrap">
+        <ion-select placeholder="Immunization">
+          <ion-select-option>Going as per schedule provided by the doctor</ion-select-option>
+          <ion-select-option>Behind schedule</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="btmBtnWrap">
+    <ion-button type="submit" class="button-round btncolorprimary blueColor">Submit</ion-button>
+  </div>
+</form>
+  </ion-content>
