@@ -56,15 +56,23 @@
     display: block;
     margin-bottom: 8px;
 }
-.btnGoogle{
-    --background: var(--ion-facebook-btn);
-}
-.btnFacebook{
-    --background: var(--ion-google-btn);
+// .btnGoogle{
+//     --background: var(--ion-facebook-btn);
+// }
+// .btnFacebook{
+//     --background: var(--ion-google-btn);
+// }
+.btnSocial{
+    --background: var(--ion-no-bg-btn);
+    padding: 0;
+    --background-activated-opacity: 0;
+    --background-focused-opacity: 0;
+    --background-hover-opacity: 0;
+    margin: 0 10px;
 }
 .btnSocial img{
-    margin-right: 5px;
-    height: 16px;
+    width: 32px;
+    height: 32px;
 }
 .headingStyle1 h2{
     margin-top: 0;

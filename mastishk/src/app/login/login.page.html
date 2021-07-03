@@ -55,14 +55,14 @@
 
       <ion-row>        
         <ion-col>
-          <ion-button class="button-round btncolorprimary btnSocial btnGoogle" expand="block">
-            <img src="../../assets/google.svg" /> Google
-          </ion-button>
-        </ion-col>
-        <ion-col>          
-          <ion-button class="button-round btncolorprimary btnSocial btnFacebook" (click)="goToDoctorProfile()" expand="block">
-            <img src="../../assets/facebook.svg" /> Facebook
-          </ion-button>
+          <div class="ion-text-center">
+            <ion-button class="btnSocial ion-no-padding">
+              <img src="../../assets/google.svg" />
+            </ion-button>         
+            <ion-button class="btnSocial ion-no-padding" (click)="goToDoctorProfile()">
+              <img src="../../assets/facebook.svg" />
+            </ion-button>
+          </div>
         </ion-col>
       </ion-row>
     </form>
