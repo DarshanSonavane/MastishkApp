@@ -12,7 +12,15 @@
       </div>
       <ion-text color="color-secondary" class="headingStyle1">
         <h2>Create Account</h2>
-      </ion-text>  
+      </ion-text>
+      <div class="formWrap">
+        <ion-radio-group class="iconicRadioGroup">
+          <ion-radio class="iconicRadio self" value="self" checked></ion-radio>
+          <ion-radio class="iconicRadio doctor" id="doctor"></ion-radio>
+          <ion-radio class="iconicRadio mhp" value="mental-health-profile"></ion-radio>
+          <ion-radio class="iconicRadio hp" value="health-profile"></ion-radio>
+        </ion-radio-group>
+      </div>
       <div class="formWrap">
         <ion-input class="inputField" formControlName="firstName" placeholder="First Name" type="text"></ion-input>
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.firstName.errors?.required">

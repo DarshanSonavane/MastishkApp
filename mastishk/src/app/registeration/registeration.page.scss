@@ -52,3 +52,29 @@
     --placeholder-color: #797979;
     --placeholder-opacity: 1
 }
+.iconicRadioGroup .radioItem{
+    display: inline-block;
+    align-items: center;
+}
+.iconicRadio{
+    width: 50px;
+    height: 50px;
+}
+.self{
+    background: url(../../assets/self.svg) no-repeat center center / 50px;
+    
+}
+.doctor{
+    background: url(../../assets/doctor.svg) no-repeat center center / 50px;
+}
+.mhp{
+    background: url(../../assets/self.svg) no-repeat center center / 50px;
+}
+.hp{
+    background: url(../../assets/nurse.svg) no-repeat center center / 50px;
+}
+.iconicRadio.radio-checked{
+    background-size: 60px;
+    width: 60px;
+    height: 60px;
+}
