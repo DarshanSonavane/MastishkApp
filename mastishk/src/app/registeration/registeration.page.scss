@@ -59,22 +59,34 @@
 .iconicRadio{
     width: 50px;
     height: 50px;
+    margin: 0 8px;
 }
 .self{
-    background: url(../../assets/self.svg) no-repeat center center / 50px;
-    
+    background: url(../../assets/self.svg) no-repeat center center / 46px;
 }
 .doctor{
-    background: url(../../assets/doctor.svg) no-repeat center center / 50px;
+    background: url(../../assets/doctor.svg) no-repeat center center / 46px;
 }
 .mhp{
-    background: url(../../assets/self.svg) no-repeat center center / 50px;
+    background: url(../../assets/metal-health.svg) no-repeat center center / 50px;
 }
 .hp{
-    background: url(../../assets/nurse.svg) no-repeat center center / 50px;
+    background: url(../../assets/nurse.svg) no-repeat center center / 46px;
+}
+
+.iconicRadio{
+    --border-width: 0;
 }
 .iconicRadio.radio-checked{
-    background-size: 60px;
-    width: 60px;
-    height: 60px;
+    --color-checked: transparent;
+}
+.iconicRadioGroup .radio-icon {
+    --border-width: 0;
+}
+.iconicRadio{
+    border: 2px solid #ddd;
+    border-radius: 50%;
+}
+.iconicRadio.radio-checked{
+    border-color: #080854;
 }
