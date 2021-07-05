@@ -219,6 +219,14 @@ export class UserProfilePage implements OnInit {
       this.isMale = true;
     }
   }
+  
+  async presentToast(message:any) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
 
   updateProfile(){
     let token = localStorage.getItem('token');
@@ -230,6 +238,7 @@ export class UserProfilePage implements OnInit {
       this.service.hideLoader();
       if(res){
         // Navigate to Dashboard
+        this.presentToast("Profile updated successfully!");
         this.router.navigate(['/dashboard']);
       }
     },error=>{

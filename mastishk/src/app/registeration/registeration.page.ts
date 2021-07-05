@@ -48,7 +48,7 @@ export class RegisterationPage implements OnInit {
       ])],
       contactNumber : ['', Validators.compose([Validators.maxLength(10), Validators.pattern('[0-9]{10}'), Validators.required])],
       roleId : ['', Validators.compose([Validators.required])],
-      child:[''],
+      dob : ['', Validators.compose([Validators.required])],
       password : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}'), Validators.required])],
       confirmPassword : ['', Validators.compose([Validators.maxLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}'), Validators.required])],
     })
@@ -72,7 +72,8 @@ export class RegisterationPage implements OnInit {
 
   doRegister(){
     this.isSubmitted = true;
-    console.log(this.registrationForm.value);
+    let dob = this.convertDate(this.registrationForm.value.dob);
+    this.registrationForm.value.dob = dob;
     /* if(!this.registrationForm.valid){
       console.log('Please provide all the required values!')
       return false;
@@ -92,5 +93,12 @@ export class RegisterationPage implements OnInit {
       console.log(this.registrationForm.value)
     // }
   }
+
+  convertDate=(inputFormat) =>{
+    function pad(s) { return (s < 10) ? '0' + s : s; }
+    var d = new Date(inputFormat)
+    return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/')
+  }
+  
 
 }

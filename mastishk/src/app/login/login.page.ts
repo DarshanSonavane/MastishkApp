@@ -65,8 +65,9 @@ export class LoginPage implements OnInit {
           }else if(userDetails.type == '2'){
             // Navigate to doctor profile
             this.router.navigate(['/doctor-profile']);
-          }else if(userDetails.type == '3'){
+          }else if(userDetails.type == '3' || userDetails.type == '4' ){
             // Navigate To Health Workers Profile
+            this.router.navigate(['/health-worker']);
           }
         }else {
           this.presentToast(res['description']);

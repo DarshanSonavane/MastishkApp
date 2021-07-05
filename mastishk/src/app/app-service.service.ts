@@ -6,7 +6,7 @@ import { LoadingController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class AppServiceService {
-  baseUrl = "http://ec2-34-219-34-218.us-west-2.compute.amazonaws.com:8080/mastishq/"
+  baseUrl = "http://ec2-54-189-155-197.us-west-2.compute.amazonaws.com:8080/mastishq/"
   constructor(private http: HttpClient,private loadingCtrl: LoadingController) { }
   
   showLoader() {
@@ -96,6 +96,40 @@ export class AppServiceService {
     delete data?.massIndexDetails?.massIndexId;
 
     let url = this.baseUrl + "user/saveOrUpdateUser/";
+    return this.http.post(url,data , {headers : headers});
+  }
+
+  updateDoctor=(data:any,headers)=>{
+    let userId = localStorage.getItem('userId');
+    
+    let state = {};
+    let district = {};
+    let user = {};
+
+    state['stateId'] = data.state;
+    district['districtId'] = data.district;
+    user['userId'] = userId;
+    data.state = state;
+    data.district = district;
+    data.user = user;
+    let url = this.baseUrl + "user/saveOrUpdateDoctor/";
+    return this.http.post(url,data , {headers : headers});
+  }
+
+  updateHealthProfessional = (data:any,headers : any)=>{
+    let userId = localStorage.getItem('userId');
+    
+    let state = {};
+    let district = {};
+    let user = {};
+
+    state['stateId'] = data.state;
+    district['districtId'] = data.district;
+    user['userId'] = userId;
+    data.state = state;
+    data.district = district;
+    data.user = user;
+    let url = this.baseUrl + "user/saveOrUpdateMhp/";
     return this.http.post(url,data , {headers : headers});
   }
 

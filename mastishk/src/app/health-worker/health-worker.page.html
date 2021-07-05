@@ -8,58 +8,53 @@
   <label class="cardLabel color-red">
     <img src="../../assets/user-red.svg" /><span>General Information</span>
   </label>
+  <form [formGroup]="healthWorkerForm" (ngSubmit)="submitHealthWorker()"> 
   <ion-card class="card">  
     <ion-card-content class="cardContent workerProfile">     
       <div class="inputWrap">
-          <ion-select placeholder="I am" class="customSelect">
-            <ion-select-option value="nurse">Nurse</ion-select-option>
-            <ion-select-option value="social-worker">Social Worker</ion-select-option>
-            <ion-select-option value="asha-worker">Asha Worker</ion-select-option>
-            <ion-select-option value="anganwadi-worker">Anganwadi Worker</ion-select-option>
+          <ion-select formControlName="piAm" placeholder="I am" class="customSelect">
+            <ion-select-option *ngFor="let i of iAmArr" [value]="i.value">{{i.name}}</ion-select-option>        
           </ion-select>
        </div>
        <div class="inputWrap">
-        <ion-select placeholder="Highest Educational Qualification" class="customSelect">
-          <ion-select-option value="c10">CLASS 10</ion-select-option>
-          <ion-select-option value="c12">CLASS 12</ion-select-option>
-          <ion-select-option value="ba">BA</ion-select-option>
-          <ion-select-option value="bsc">BSc</ion-select-option>
-          <ion-select-option value="ma">MA</ion-select-option>
-          <ion-select-option value="msc">MSc</ion-select-option>
-          <ion-select-option value="mws">MSW</ion-select-option>
-          <ion-select-option value="m-phill">M.Phil</ion-select-option>          
+        <ion-select formControlName="highestEducation" placeholder="Highest Educational Qualification" class="customSelect">
+          <ion-select-option *ngFor="let he of highestEducationArr" [value]="he.value">{{he.name}}</ion-select-option>        
         </ion-select>
       </div>     
       <div class="inputWrap">
-      <ion-input class="inputField" placeholder="Registered With" type="text" required></ion-input>
+      <ion-input class="inputField" formControlName="registeredWith" placeholder="Registered With" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-      <ion-input class="inputField" placeholder="Residence" type="text" required></ion-input>
+      <ion-input class="inputField" formControlName="resident" placeholder="Residence" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-      <ion-select placeholder="Currently Working With(Hospital/association)" class="customSelect">
-        <ion-select-option value="independent">Independent</ion-select-option>
-        <ion-select-option value="associated">Associated</ion-select-option>
+      <ion-select placeholder="Currently Working With(Hospital/association)" formControlName="currentlyWorking" class="customSelect">
+        <ion-select-option *ngFor="let w of workingTypeArr" [value]="w.value">{{w.name}}</ion-select-option>
       </ion-select>
       </div>
       <div class="inputWrap">
-      <ion-input class="inputField" placeholder="Name of hospital/association" type="text" required></ion-input>
+      <ion-input class="inputField" formControlName="nameOfHospital" placeholder="Name of hospital/association" type="text" required></ion-input>
       </div>
       <div class="inputWrap">
-      <ion-input class="inputField" placeholder="Hospital/association's Address" type="text" required></ion-input>
+      <ion-input class="inputField" formControlName="hospitalAddress" placeholder="Hospital/association's Address" type="text" required></ion-input>
     </div>
-    <div class="inputWrap">
-      <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
+    <div class="formWrap">
+      <ion-select placeholder="State" [(ngModel)]="state" formControlName="state" (ionChange)="onStateChange()">
+        <ion-select-option *ngFor="let s of stateList" [value]="s.stateId">{{s.stateName}}</ion-select-option>
+      </ion-select>
     </div>
-    <div class="inputWrap">
-      <ion-input class="inputField" placeholder="District" type="text" required></ion-input>
+    <div class="formWrap">
+      <ion-select placeholder="District" [(ngModel)]="district" formControlName="district">
+        <ion-select-option *ngFor="let d of districtsForState" [value]="d.districtId" value="Y">{{d.districtName}}</ion-select-option>
+      </ion-select>
     </div>
       <div class="inputWrap">
-      <ion-input class="inputField" placeholder="City/Town" type="text" required></ion-input>
+      <ion-input class="inputField" formControlName="city" placeholder="City/Town" type="text" required></ion-input>
       </div>
   </ion-card-content>
 </ion-card>
 <div class="btmBtnWrap">
-  <ion-button class="button-round btncolorprimary blueColor">Submit</ion-button>
+  <ion-button type="submit" class="button-round btncolorprimary blueColor">Submit</ion-button>
 </div>
+</form>
 </ion-content>

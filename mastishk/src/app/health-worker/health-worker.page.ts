@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { AppServiceService } from '../app-service.service'
+import { ToastController , MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-health-worker',
@@ -7,9 +11,138 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HealthWorkerPage implements OnInit {
 
-  constructor() { }
+  healthWorkerForm : FormGroup;
 
-  ngOnInit() {
+  stateList:any = [];
+  districtsForState:any = [];
+
+  iAmArr = [{
+    "name":"Nurse",
+    "value":"nurse"
+  },{
+    "name":"Social Worker",
+    "value":"social_worker"
+  },{
+    "name":"Asha Worker",
+    "value":"asha_worker"
+  },{
+    "name":"Anganwadi Worker",
+    "value":"anganwadi_worker"
+  }];
+
+  highestEducationArr = [{
+    "name":"CLASS 10",
+    "value":"class10"
+  },{
+    "name":"CLASS 12",
+    "value":"class12"
+  },{
+    "name":"BA",
+    "value":"ba"
+  },{
+    "name":"BSc",
+    "value":"bsc"
+  },{
+    "name":"MA",
+    "value":"ma"
+  },{
+    "name":"MSc",
+    "value":"msc"
+  },{
+    "name":"MSW",
+    "value":"msw"
+  },{
+    "name":"M.Phil",
+    "value":"mphil"
+  }]
+
+  workingTypeArr = [{
+    "name":"Independent",
+    "value":"independent"
+  },{
+    "name":"Associated",
+    "value":"associated"
+  }]
+
+  state:any = "";
+  district:any = "";
+  piAm:any = "";
+  highestEducation:any = "";
+  registeredWith:any = "";
+  resident:any = "";
+  currentlyWorking:any = "";
+  nameOfHospital:any = "";
+  hospitalAddress:any = "";
+  city:any = "";
+
+  selectedStateId:any = "";
+
+  constructor(private router :Router , public formBuilder: FormBuilder , public service :AppServiceService , public toastController : ToastController , public menu : MenuController) {
+    this.getStateList();
   }
 
+  ionViewWillEnter() {
+    this.menu.enable(false);
+  }
+
+  onStateChange=()=>{
+    this.selectedStateId = !this.selectedStateId ? this.state : this.selectedStateId;
+    if(this.selectedStateId != ""){
+      this.service.getAllDistrictsForState(this.selectedStateId).subscribe((res)=>{
+        if(res){
+          this.districtsForState = res;
+        }
+      })
+    }
+  }
+
+  ngOnInit() {
+
+    this.healthWorkerForm = this.formBuilder.group({
+      state: ['', Validators.compose([Validators.required])],
+      district: ['', Validators.compose([Validators.required])],
+      piAm: ['', Validators.compose([Validators.required])],
+      highestEducation: ['', Validators.compose([Validators.required])],
+      registeredWith: ['', Validators.compose([Validators.required])],
+      resident:['', Validators.compose([Validators.required])],
+      currentlyWorking: ['', Validators.compose([Validators.required])],
+      nameOfHospital: ['', Validators.compose([Validators.required])],
+      hospitalAddress: ['', Validators.compose([Validators.required])],
+      city: ['', Validators.compose([Validators.required])],
+    })
+  }
+
+  getStateList=()=>{
+    this.service.getStateList().subscribe((res)=>{
+      if(res){
+        console.log(res)
+        this.stateList = res;
+      }
+    })
+  }
+
+  async presentToast(message:any) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  submitHealthWorker=()=>{
+    let token = localStorage.getItem('token');
+    let header =  {
+      'Authorization' : token
+    }
+    this.service.showLoader();
+    this.service.updateHealthProfessional(this.healthWorkerForm.value,header).subscribe((res)=>{
+      if(res){
+        this.service.hideLoader();
+        this.presentToast("Health worker profile updated successfully!");
+        this.router.navigate(['/dashboard']);
+      }
+    },error=>{
+      this.service.hideLoader();
+    })
+  }
 }

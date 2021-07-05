@@ -9,151 +9,60 @@
   <label class="cardLabel color-red">
     <img src="../../assets/user-red.svg" /><span>General Information</span>
   </label>
-  <ion-card class="card">  
-    <ion-card-content class="cardContent doctorProfile">
-     <div class="inputWrap">
-       <ion-input class="inputField" placeholder="Registered with which state" type="text" required></ion-input>
-      </div>
-     <div class="inputWrap">
-       <ion-input class="inputField" placeholder="Medical Registration Number" type="text" required></ion-input>
-      </div>
+  <form [formGroup]="doctorForm" (ngSubmit)="submitDoctor()">
+    <ion-card class="card">  
+      <ion-card-content class="cardContent doctorProfile">
       <div class="inputWrap">
-          <ion-select placeholder="Speciality" class="customSelect">
-            <ion-select-option value="psychiatrist">Psychiatrist</ion-select-option>
-            <ion-select-option value="ent">ENT</ion-select-option>
-            <ion-select-option value="gastro">Gastroenterologist</ion-select-option>
-            <ion-select-option value="gp">General Physician</ion-select-option>
-            <ion-select-option value="cardiologist">Cardiologist</ion-select-option>
-            <ion-select-option value="gynecologist">Gynecologist</ion-select-option>
-            <ion-select-option value="endocrinologist">Endocrinologist</ion-select-option>
-            <ion-select-option value="diabetologist">Diabetologist</ion-select-option>
-            <ion-select-option value="orthopedician">Orthopedician</ion-select-option>
-            <ion-select-option value="dermatologist">Dermatologist</ion-select-option>
-            <ion-select-option value="pediatrician">Pediatrician</ion-select-option>
-            <ion-select-option value="other">Other,Pls Specify</ion-select-option>
+        <ion-input class="inputField" formControlName="regWithState" placeholder="Registered with which state" type="text" required></ion-input>
+        </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" formControlName="medicalRegNum" placeholder="Medical Registration Number" type="text" required></ion-input>
+        </div>
+        <div class="inputWrap">
+            <ion-select placeholder="Speciality" formControlName="speciality" class="customSelect">
+              <ion-select-option *ngFor="let s of specialityArr" [value]="s.value">{{s.name}}</ion-select-option>
+            </ion-select>
+        </div>
+        <!-- <div class="inputWrap">
+          <ion-textarea class="customTextarea" formControlName="speciality" placeholder="Educational Qualification" type="text" required></ion-textarea>
+        </div> -->
+        <div class="inputWrap">
+          <ion-input class="inputField" formControlName="associatedHospital" placeholder="Associated Hospital" type="text" required></ion-input>
+        </div>
+        <div class="inputWrap">
+          <ion-input class="inputField" formControlName="resident" placeholder="Residence" type="text" required></ion-input>
+        </div>
+        <div class="inputWrap">
+          <ion-select placeholder="Clinic" class="customSelect" formControlName="clinic">
+            <ion-select-option *ngFor="let c of clinicType" [value]="c.value">{{c.name}}</ion-select-option>
           </ion-select>
-       </div>
-       <div class="inputWrap">
-        <ion-textarea class="customTextarea" placeholder="Educational Qualification" type="text" required></ion-textarea>
-       </div>
-       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Associated Hospital" type="text" required></ion-input>
-       </div>
-       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Residence" type="text" required></ion-input>
-       </div>
-       <div class="inputWrap">
-        <ion-select placeholder="Clinic" class="customSelect">
-          <ion-select-option value="self">Self</ion-select-option>
-          <ion-select-option value="associated">Associated</ion-select-option>
-        </ion-select>
-       </div>
-       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Clinic's Address" type="text" required></ion-input>
-       </div>
-       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="District" type="text" required></ion-input>
-      </div>
-       <div class="inputWrap">
-        <ion-input class="inputField" placeholder="City/Town" type="text" required></ion-input>
-       </div>
-       <div class="inputWrap">
-        <ion-select placeholder="On an average how many patients present psychiatric(mental illness) symptoms?" class="customSelect">
-          <ion-select-option value="lt10">less than 10</ion-select-option>
-          <ion-select-option value="10-30">10-30</ion-select-option>
-          <ion-select-option value="above-30">Above 30</ion-select-option>
-        </ion-select>
-       </div>
-    </ion-card-content>
-  </ion-card>
+        </div>
+        <div class="inputWrap">
+          <ion-input class="inputField" formControlName="clinicAddress" placeholder="Clinic's Address" type="text" required></ion-input>
+        </div>
+        <div class="formWrap">
+          <ion-select placeholder="State" [(ngModel)]="state" formControlName="state" (ionChange)="onStateChange()">
+            <ion-select-option *ngFor="let s of stateList" [value]="s.stateId">{{s.stateName}}</ion-select-option>
+          </ion-select>
+        </div>
+        <div class="formWrap">
+          <ion-select placeholder="District" [(ngModel)]="district" formControlName="district">
+            <ion-select-option *ngFor="let d of districtsForState" [value]="d.districtId" value="Y">{{d.districtName}}</ion-select-option>
+          </ion-select>
+        </div>
+        <div class="inputWrap">
+          <ion-input class="inputField" formControlName="city" placeholder="City/Town" type="text" required></ion-input>
+        </div>
+        <div class="inputWrap">
+          <ion-select formControlName="howManyPatientsPresent" placeholder="On an average how many patients present psychiatric(mental illness) symptoms?" class="customSelect">
+            <ion-select-option *ngFor="let p of patientCount" [value]="p.value">{{p.name}}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-card-content>
+    </ion-card>
   
-  <!-- <label class="cardLabel color-blue">
-    <img src="../../assets/home.svg" /><span>Place of Residence</span>
-  </label>
-  <ion-card class="card">  
-    <ion-card-content class="cardContent">  
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="District" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Residence Type" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Family Income (Yearly)" type="text" required></ion-input>
-      </div>    
-    </ion-card-content>
-  </ion-card>
-  
-  <label class="cardLabel color-green">
-    <img src="../../assets/parameter.svg" /><span>Vital Parameters</span>
-  </label>
-  <ion-card class="card">  
-    <ion-card-content class="cardContent">
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Pulse Rate" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Blood Pressure" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Any Disability" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Co-Morbidities" type="text" required></ion-input>
-      </div>
-    </ion-card-content>
-  </ion-card>
-  
-  <label class="cardLabel color-orange">
-    <img src="../../assets/body-mass.svg" /><span>Body Mass Index(BMI)</span>
-  </label>
-  <ion-card class="card">  
-    <ion-card-content class="cardContent">
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Weight (Kg)" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Height(cm)" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Menstrual Cycle" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Last Menstrual Period" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Duration of Period" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Length of period cycle" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Handedness" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="Do you require any support while walking/ moving (eg.stick,wheelchair)" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
-      <div class="inputWrap">
-        <ion-input class="inputField" placeholder="State" type="text" required></ion-input>
-      </div>
-    </ion-card-content>
-  </ion-card> -->
-  <div class="btmBtnWrap">
-    <ion-button class="button-round btncolorprimary blueColor">Save</ion-button>
-  </div>
+    <div class="btmBtnWrap">
+      <ion-button type="submit" class="button-round btncolorprimary blueColor">Save</ion-button>
+    </div>
+  </form>
   </ion-content>
