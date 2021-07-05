@@ -18,6 +18,9 @@
 }
 .inputField{    
     border-bottom: 1px solid #808080;
+    padding-left: 8px;
+    --padding-top: 5px;
+    --padding-bottom: 5px;
 }
 .has-focus{
     border-color: #1a1a1a;
@@ -89,4 +92,15 @@
 }
 .iconicRadio.radio-checked{
     border-color: #080854;
+}
+.iconicRadioGroup>div{
+    display: inline-block;
+}
+.iconicRadioGroup>div>span{
+    display: block;
+    text-align: center;
+}
+.dateTime{
+    background: url(../../assets/calendar.svg) no-repeat right center / 16px;
+    padding: 0px 35px 5px  8px;
 }
