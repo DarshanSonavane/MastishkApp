@@ -25,6 +25,14 @@
 .has-focus{
     border-color: #1a1a1a;
 }
+.btn{
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pt-16{
+    padding-top: 16px;
+}
 .userIcon{
     background: url(../../assets/user.svg) no-repeat 10px center;
     padding: 0px 0 0px 35px !important;

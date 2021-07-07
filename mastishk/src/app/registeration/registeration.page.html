@@ -26,7 +26,7 @@
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.firstName.errors?.required">
           First name is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.firstName.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.firstName.errors?.pattern">
           Please provide valid first name.
         </span>
       </div>
@@ -35,7 +35,7 @@
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.lastName.errors?.required">
           Last name is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.lastName.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.lastName.errors?.pattern">
           Please provide valid last name.
         </span>
       </div>
@@ -44,7 +44,7 @@
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.email.errors?.required">
           Email is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
           Please provide valid email.
         </span>
       </div>
@@ -53,7 +53,7 @@
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.contactNumber.errors?.required">
           Mobile number is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.contactNumber.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.contactNumber.errors?.pattern">
           Please provide valid mobile number.
         </span>
       </div>
@@ -75,7 +75,7 @@
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.password.errors?.required">
           Password is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
           Please provide valid password.
         </span>
       </div>
@@ -84,12 +84,12 @@
         <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.confirmPassword.errors?.required">
           Password is required.
         </span>
-        <span class="error-message ion-padding" *ngIf="isSubmitted && errorControl.confirmPassword.errors?.pattern">
+        <span class="error-message validationMsg" *ngIf="isSubmitted && errorControl.confirmPassword.errors?.pattern">
           Please provide valid password.
         </span>
       </div>
-      <div class="formWrap">
-        <ion-button class="button-round btncolorprimary" type="submit" expand="full" >Sign Up</ion-button>
+      <div class="formWrap pt-16">
+        <ion-button class="btn button-round btncolorprimary" type="submit" expand="full" >Sign Up</ion-button>
       </div>
     <ion-row>
       <ion-col class="formWrap forgotPassword">

@@ -24,7 +24,15 @@
 }
 .has-focus{
     border-color: #1a1a1a;
-   }
+}
+.btn{
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pt-16{
+    padding-top: 16px;
+}
 .btncolorprimary {
     --background: var(--ion-primary-btn);
   }
@@ -45,6 +53,7 @@
 }
 .error-message{
     color: var(--ion-color-danger);
+    font-size: 13px;
 }
 .customSelect, .customTextarea{
     padding-left: 0;
@@ -65,16 +74,16 @@
     margin: 0 8px;
 }
 .self{
-    background: url(../../assets/self.svg) no-repeat center center / 46px;
+    background: url(../../assets/self.svg) no-repeat center center / 36px;
 }
 .doctor{
-    background: url(../../assets/doctor.svg) no-repeat center center / 46px;
+    background: url(../../assets/doctor.svg) no-repeat center center / 38px;
 }
 .mhp{
-    background: url(../../assets/metal-health.svg) no-repeat center center / 50px;
+    background: url(../../assets/mhp.svg) no-repeat center center / 36px;
 }
 .hp{
-    background: url(../../assets/nurse.svg) no-repeat center center / 46px;
+    background: url(../../assets/nurse.svg) no-repeat center center / 36px;
 }
 
 .iconicRadio{
