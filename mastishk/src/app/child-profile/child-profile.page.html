@@ -5,47 +5,51 @@
 </ion-header>
 
 <ion-content class="ion-padding content-bg">
-  <form class="fullW">
+  <form class="fullW" [formGroup]="childProfileForm" (ngSubmit)="updateChildProfile()">
   <label class="cardLabel color-red">
     <img src="../../assets/user-red.svg" /><span>General Information</span>
   </label>
   <ion-card class="card">  
     <ion-card-content class="cardContent">
      <div class="inputWrap">
-       <ion-input class="inputField" placeholder="Name" type="text" required></ion-input>
+       <ion-input class="inputField" formControlName="firstName" placeholder="First Name" type="text" required></ion-input>
       </div>
+      <div class="inputWrap">
+        <ion-input class="inputField" formControlName="middleName" placeholder="Middle Name" type="text" required></ion-input>
+       </div>
+       <div class="inputWrap">
+        <ion-input class="inputField" formControlName="lastName" placeholder="LAst Name" type="text" required></ion-input>
+       </div>
      <div class="inputWrap">
-       <ion-input class="inputField" placeholder="Age" type="text" required></ion-input>
+       <ion-input class="inputField" formControlName="age" placeholder="Age" type="text" required></ion-input>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Gender">
-          <ion-select-option>Male</ion-select-option>
-          <ion-select-option>Female</ion-select-option>
+        <ion-select placeholder="Gender" formControlName="gender">
+          <ion-select-option *ngFor="let g of genderArr" [value]="g.value">{{g.name}}</ion-select-option>
         </ion-select>
       </div>
        <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="School" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="school"  placeholder="School" type="text" required></ion-input>
        </div>
        <div class="formWrap">
-        <ion-select placeholder="Type Of School">
-          <ion-select-option>Special School</ion-select-option>
-          <ion-select-option>Normal School</ion-select-option>
+        <ion-select placeholder="Type Of School" formControlName="typeOfSchool">
+          <ion-select-option *ngFor="let st of schoolType" [value]="st.value">{{st.name}}</ion-select-option>
         </ion-select>
       </div>
        <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="Class" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="schooleClass"  placeholder="Class" type="text" required></ion-input>
        </div>
        <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="Mother's Name" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="motherName" placeholder="Mother's Name" type="text" required></ion-input>
        </div>
        <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="Mother's Occupation" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="motherOccuption" placeholder="Mother's Occupation" type="text" required></ion-input>
        </div>
        <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="Father's Name" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="fatherName"  placeholder="Father's Name" type="text" required></ion-input>
        </div>
        <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="Father's Occupation" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="fatherOccuption"  placeholder="Father's Occupation" type="text" required></ion-input>
        </div>
     </ion-card-content>
   </ion-card>
@@ -56,30 +60,26 @@
   <ion-card class="card">  
     <ion-card-content class="cardContent" formGroupName="contactDetails">  
       <div class="formWrap">
-        <ion-select placeholder="State">
-          <ion-select-option>State Name</ion-select-option>
+        <ion-select placeholder="State" [(ngModel)]="state" formControlName="state" (ionChange)="onStateChange()">
+          <ion-select-option *ngFor="let s of stateList" [value]="s.stateId">{{s.stateName}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="District">
-          <ion-select-option>District Name</ion-select-option>
+        <ion-select placeholder="District" [(ngModel)]="district" formControlName="district">
+          <ion-select-option *ngFor="let d of districtsForState" [value]="d.districtId" value="Y">{{d.districtName}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Resident Type">
-          <ion-select-option>Rural</ion-select-option>
-          <ion-select-option>Urban</ion-select-option>
+        <ion-select placeholder="Resident Type" formControlName="resident_type">
+          <ion-select-option *ngFor="let rt of residentType" [value]="rt.value">{{rt.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="Languages Known" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="languageKnown"  placeholder="Languages Known" type="text" required></ion-input>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Family Income">
-          <ion-select-option>Below 10 lakhs</ion-select-option>
-          <ion-select-option>10-20 lakhs</ion-select-option>
-          <ion-select-option>20 -30 lakhs</ion-select-option>
-          <ion-select-option>Above 30 lakhs</ion-select-option>
+        <ion-select placeholder="Family Income" formControlName="extra_field1">
+          <ion-select-option *ngFor="let fi of familyIncome" [value]="fi.value">{{fi.name}}</ion-select-option>
         </ion-select>
       </div>
     </ion-card-content>
@@ -91,18 +91,13 @@
   <ion-card class="card">  
     <ion-card-content class="cardContent">
       <div class="formWrap">
-        <ion-select placeholder="Sleep">
-          <ion-select-option>Normal (Sleeps for atleast 8 hrs, fixed time of sleep and doesnt wake up during the night)</ion-select-option>
-          <ion-select-option>Sleeping more than ususal</ion-select-option>
-          <ion-select-option>Sleeping less than usual</ion-select-option>
-          <ion-select-option>Wakes up frequently during night</ion-select-option>
+        <ion-select placeholder="Sleep" formControlName="sleep">
+          <ion-select-option *ngFor="let st of sleepType" [value]="st.value">{{st.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Appetite">
-          <ion-select-option>Normal</ion-select-option>
-          <ion-select-option>Eating more than usual</ion-select-option>
-          <ion-select-option>Eating less than usual</ion-select-option>
+        <ion-select placeholder="Appetite" formControlName="appitite">
+          <ion-select-option *ngFor="let at of appititeType" [value]="at.value">{{at.name}}</ion-select-option>
         </ion-select>
       </div>
     </ion-card-content>
@@ -114,27 +109,23 @@
   <ion-card class="card">  
     <ion-card-content class="cardContent">
       <div class="formWrap">
-        <ion-select placeholder="Mother exposed to trauma like X rays,drugs">
-          <ion-select-option>Yes</ion-select-option>
-          <ion-select-option>NO</ion-select-option>
+        <ion-select placeholder="Mother exposed to trauma like X rays,drugs" formControlName="emotionalTramua">
+          <ion-select-option *ngFor="let m of motherExposed" [value]="m.value">{{m.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Mother suffered from any infectious disease">
-          <ion-select-option>Yes</ion-select-option>
-          <ion-select-option>NO</ion-select-option>
+        <ion-select placeholder="Mother suffered from any infectious disease" formControlName="infectiousDisease">
+          <ion-select-option *ngFor="let m of motherExposed" [value]="m.value">{{m.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Failed abortion attempt made">
-          <ion-select-option>Yes</ion-select-option>
-          <ion-select-option>NO</ion-select-option>
+        <ion-select placeholder="Failed abortion attempt made" formControlName="abortionAttempt">
+          <ion-select-option *ngFor="let m of motherExposed" [value]="m.value">{{m.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Mother suffered from emotional trauma">
-          <ion-select-option>Yes</ion-select-option>
-          <ion-select-option>NO</ion-select-option>
+        <ion-select placeholder="Mother suffered from emotional trauma" formControlName="emotionalTramua">
+          <ion-select-option *ngFor="let m of motherExposed" [value]="m.value">{{m.name}}</ion-select-option>
         </ion-select>
       </div>
     </ion-card-content>
@@ -146,49 +137,38 @@
   <ion-card class="card">  
     <ion-card-content class="cardContent">
       <div class="formWrap">
-        <ion-select placeholder="Term of Delivery">
-          <ion-select-option>Full Term (37 weeks/9months)</ion-select-option>
-          <ion-select-option>Pre Term (28-32 weeks/7-8 months)</ion-select-option>
-          <ion-select-option>Post Term (40-42 weeks/10 months)</ion-select-option>
+        <ion-select placeholder="Term of Delivery" formControlName="deliveryTerm">
+          <ion-select-option *ngFor="let dt of deliveryTerms" [value]="dt.value">{{dt.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Place of Delivery">
-          <ion-select-option>Hospital</ion-select-option>
-          <ion-select-option>Home</ion-select-option>
-          <ion-select-option>Other</ion-select-option>
+        <ion-select placeholder="Place of Delivery" formControlName="placeOfDevlivery">
+          <ion-select-option *ngFor="let dp of devliveryPlace" [value]="dp.value">{{dp.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Type of Delivery">
-          <ion-select-option>Normal(Vaginal Birth)</ion-select-option>
-          <ion-select-option>Ceaserian(Surgical delivery)</ion-select-option>
-          <ion-select-option>Instrumental(Forceps delivery)</ion-select-option>
+        <ion-select placeholder="Type of Delivery" formControlName="typeOfDelivery">
+          <ion-select-option *ngFor="let t of typeOfDeliveryArr" [value]="t.value">{{t.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Birth weight">
-          <ion-select-option>Normal(2.5-2.9 Kgs)</ion-select-option>
-          <ion-select-option>Above normal(3-4.5 Kgs)</ion-select-option>
-          <ion-select-option>Below Normal( Less than 2.5 Kgs)</ion-select-option>
+        <ion-select placeholder="Birth weight" formControlName="birthWeight">
+          <ion-select-option *ngFor="let w of weight" [value]="w.value">{{w.name}}</ion-select-option>
         </ion-select>
       </div>
       <div class="formWrap">
-        <ion-select placeholder="Birth Cry">
-          <ion-select-option>Present(Immediately cried)</ion-select-option>
-          <ion-select-option>Delayed(Cried after some time)</ion-select-option>
-          <ion-select-option>Absent(No birth cry)</ion-select-option>
+        <ion-select placeholder="Birth Cry" formControlName="birthCry">
+          <ion-select-option *ngFor="let ct of cryType" [value]="ct.value">{{ct.name}}</ion-select-option>
         </ion-select>
       </div>
 
       <div class="inputWrap">
-        <ion-input class="inputField"  placeholder="Complications during delivery, if any" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="complDuringDelivery"  placeholder="Complications during delivery, if any" type="text" required></ion-input>
       </div>
 
       <div class="formWrap">
-        <ion-select placeholder="Immunization">
-          <ion-select-option>Going as per schedule provided by the doctor</ion-select-option>
-          <ion-select-option>Behind schedule</ion-select-option>
+        <ion-select placeholder="Immunization" formControlName="immunization">
+          <ion-select-option *ngFor="let i of immuneArr" [value]="i.value">{{i.name}}</ion-select-option>
         </ion-select>
       </div>
     </ion-card-content>

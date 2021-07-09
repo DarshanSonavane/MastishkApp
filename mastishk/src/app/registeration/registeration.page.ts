@@ -12,7 +12,7 @@ import { ToastController , MenuController } from '@ionic/angular';
 export class RegisterationPage implements OnInit {
   registrationForm : FormGroup;
   isSubmitted = false;
-
+  selectedRoleId:any = "";
   constructor(private router :Router , public formBuilder: FormBuilder , public service :AppServiceService , public toastController : ToastController , public menu : MenuController) { }
 
   roleType = [{
@@ -74,6 +74,7 @@ export class RegisterationPage implements OnInit {
     this.isSubmitted = true;
     let dob = this.convertDate(this.registrationForm.value.dob);
     this.registrationForm.value.dob = dob;
+    this.registrationForm.value.roleId = this.selectedRoleId;
     /* if(!this.registrationForm.valid){
       console.log('Please provide all the required values!')
       return false;
@@ -100,5 +101,11 @@ export class RegisterationPage implements OnInit {
     return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/')
   }
   
+  /* radioGroupChange=(event)=>{
+    this.selectedRoleId = event.detail;
+  } */
 
+  onChangeHandler=($event)=>{
+    this.selectedRoleId = $event.target.value;
+  }
 }

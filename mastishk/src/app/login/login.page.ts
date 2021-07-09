@@ -61,7 +61,11 @@ export class LoginPage implements OnInit {
           let userDetails = res['user'];
           console.log("Type",userDetails);
           if(userDetails.type == '1'){
-            this.router.navigate(['/user-profile']);
+            if(userDetails.child){
+              this.router.navigate(['/child-profile']);
+            }else{
+              this.router.navigate(['/user-profile']);
+            }
           }else if(userDetails.type == '2'){
             // Navigate to doctor profile
             this.router.navigate(['/doctor-profile']);

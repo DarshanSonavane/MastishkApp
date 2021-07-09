@@ -6,7 +6,7 @@ import { LoadingController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class AppServiceService {
-  baseUrl = "http://ec2-54-189-155-197.us-west-2.compute.amazonaws.com:8080/mastishq/"
+  baseUrl = "http://ec2-18-236-68-123.us-west-2.compute.amazonaws.com:8080/mastishq/"
   constructor(private http: HttpClient,private loadingCtrl: LoadingController) { }
   
   showLoader() {
@@ -85,15 +85,52 @@ export class AppServiceService {
     data['contactDetails']['addr_type'] ="";
     data['contactDetails']['extra_field2'] ="";
     data['contactDetails']['id'] = data?.contactDetails?.contactId || null;
-
-    data['vitalParameters']['id']= data?.vitalParameters?.vitalId || null;
-    data['massIndexDetails']['id']= data?.massIndexDetails?.massIndexId || null;
-    data['massIndexDetails']['height']= parseInt(data?.massIndexDetails?.height) || null;
-    data['massIndexDetails']['weight']= parseInt(data?.massIndexDetails?.weight) || null;
-
-    delete data?.vitalParameters?.vitalId;
-    delete data?.contactDetails?.contactId;
-    delete data?.massIndexDetails?.massIndexId;
+    if(data.vitalParameters){
+      data['vitalParameters']['id']= data?.vitalParameters?.vitalId || null;
+    }else{
+      let obj = {
+        "id": null,
+        "pulse_rate": null,
+        "blood_presure": null,
+        "any_disability": false,
+        "co_morbility": null,
+        "extra_field1": null,
+        "extra_field2": null
+      }
+      data['vitalParameters'] = obj;
+        
+    }
+    
+    if(data.massIndexDetails){
+      data['massIndexDetails']['id']= data?.massIndexDetails?.massIndexId || null;
+      data['massIndexDetails']['height']= parseInt(data?.massIndexDetails?.height) || null;
+      data['massIndexDetails']['weight']= parseInt(data?.massIndexDetails?.weight) || null;
+    }else {
+      let massObj = {
+        "id": null,
+        "weight": 0,
+        "height": 0,
+        "menstrual_cycle": null,
+        "last_menstrual_period": null,
+        "duration_of_period": null,
+        "length_of_period_cycle": null,
+        "handedness": null,
+        "is_support_required": false,
+        "normal_walk": null,
+        "fasial_palsy": null,
+        "medical_history": null
+      }
+      data['massIndexDetails'] = massObj;
+    }
+    if(data.vitalParameters){
+      delete data?.vitalParameters?.vitalId;
+    }
+    if(data.contactDetails){
+      delete data?.contactDetails?.contactId;
+    }
+    if(data.massIndexDetails){
+      delete data?.massIndexDetails?.massIndexId;
+    }
 
     let url = this.baseUrl + "user/saveOrUpdateUser/";
     return this.http.post(url,data , {headers : headers});

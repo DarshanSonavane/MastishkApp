@@ -18,6 +18,9 @@ export class UserProfilePage implements OnInit {
   },{
     'name':"Female",
     'value':'F'
+  },{
+    'name':"Other",
+    'value':'O'
   }];
 
   disablites = [{
