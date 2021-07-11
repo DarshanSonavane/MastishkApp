@@ -1,0 +1,87 @@
+.content-bg {
+    --background: var(--ion-bg-color);
+}
+.loginWrap {
+    display: flex;
+    height: 100%;
+    // align-items: center;
+}
+.fullW{
+    width: 100%;
+}
+.logo{
+    max-width: 90px;
+    margin: 32px auto 32px auto;
+}
+.formWrap{
+    margin-bottom: 16px;
+}
+.inputField{    
+    border-bottom: 1px solid #808080;
+    padding-left: 8px;
+    --padding-top: 5px;
+    --padding-bottom: 5px;
+}
+.has-focus{
+    border-color: #1a1a1a;
+}
+.btn{
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pt-16{
+    padding-top: 16px;
+}
+.btncolorprimary {
+    --background: var(--ion-primary-btn);
+  }
+.btnPrimaryOutline {
+    --border-color: var(--ion-primary-outline-btn);
+    --color: var(--ion-color-primary-2);
+}
+
+.customCard.self{
+    background: #eeffd8 url(../../assets/self.svg) no-repeat bottom left / 65px;
+}
+.customCard.doctor{
+    background: #fffce0 url(../../assets/doctor.svg) no-repeat  bottom left / 65px;
+}
+.customCard.mhp{
+    background: #deecff url(../../assets/mhp.svg) no-repeat  bottom left / 65px;
+}
+.customCard.hp{
+    background:#ffdede url(../../assets/nurse.svg) no-repeat  bottom left / 65px;
+}
+.customCard{
+    font-size: 1.2rem;
+    min-height: 100px;
+    padding: 5px 5px 5px 70px;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 500;
+}
+.dashboard ion-card{
+    margin: 0;
+}
+.dashboard ion-grid{
+    padding: 0;
+}
+.customCard.self span{
+    color: #4b8600;
+}
+.customCard.doctor span{
+    color: #736800;
+}
+.customCard.hp span{
+    color: #820000;
+}
+.customCard.mhp span{
+    color: #066b5d;
+}
+@media (max-width: 374px) {
+    .customCard{
+        background-size: 50px;
+        padding-left: 65px;
+    }
+}
