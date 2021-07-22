@@ -92,8 +92,14 @@
     font-size: 14px;
     --placeholder-opacity: .5;
 }
+.btmBtnWrap{
+    text-align: center;
+}
+.btmBtnWrap ion-button {
+    min-width: 150px;
+}
 .customSelect, .customTextarea, ion-select{
-    padding-left: 0;
+    --padding-left: 0;
     --padding-top: 0px;
     --padding-bottom: 5px;
     border-bottom: 1px solid #f2f2f7;
@@ -102,11 +108,58 @@
     --placeholder-color: #797979;
     --placeholder-opacity: .5;
 }
-.btmBtnWrap{
-    text-align: center;
+.customTextarea{
+    --padding-right: 0px;
 }
-.btmBtnWrap ion-button {
-    min-width: 150px;
+
+.questions{
+    padding-left: 0;    
+    // list-style-position: inside
+    counter-reset: h3;    
+    list-style-type: none;
+}
+.questions li{
+    position: relative;
+    counter-increment: h3;
+}
+.questions li::before {
+    content: counter(h3) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+.questionLabel{
+    display: block;
+    padding-left: 30px;
+}
+.questions ion-card{
+    margin-top: 10px;
+}
+.questions .ion-radio{
+    --inner-border-width: 0;
+}
+.questions ion-radio{
+    margin: 0 10px 0 0;
+}
+.questions ion-label{
+    margin: 0;
+}
+.questions ion-item{
+    --min-height: 24px;
+    --padding-start: 0;
+    --background-hover: none;
+    margin-bottom: 10px;
+}
+.questions ion-item:last-child{
+    margin-bottom: 0;
+}
+ion-list{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.no-ripple {
+    --ripple-color: transparent;
+    --background-activated: transparent;
 }
 .toolbarBg{
     --background: rgb(8,8,84,1);
