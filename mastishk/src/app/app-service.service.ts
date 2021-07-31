@@ -172,7 +172,13 @@ export class AppServiceService {
 
   /* getDoctorDetails = (userId:any , headers : any)=>{
     let userId = localStorage.getItem('userId');
-    let url = this.baseUrl + "user/saveOrUpdateDoctor/";
+    let url = this.baseUrl + "user/getDoctorDetlsById/";
+    return this.http.post(url,data , {headers : headers});
+  } */
+
+  /* getMHPDetails = (userId:any , headers : any)=>{
+    let userId = localStorage.getItem('userId');
+    let url = this.baseUrl + "user/getMhpDetlsById/";
     return this.http.post(url,data , {headers : headers});
   } */
 
