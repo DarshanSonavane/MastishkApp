@@ -91,4 +91,8 @@ export class LoginPage implements OnInit {
   goToDoctorProfile(){
     this.router.navigate(['/doctor-profile']);
   }
+
+  goToDashboard(){
+    this.router.navigate(['/dashboard']);
+  }
 }

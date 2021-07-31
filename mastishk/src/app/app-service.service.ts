@@ -6,7 +6,7 @@ import { LoadingController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class AppServiceService {
-  baseUrl = "http://ec2-18-236-68-123.us-west-2.compute.amazonaws.com:8080/mastishq/"
+  baseUrl = "http://ec2-54-185-253-239.us-west-2.compute.amazonaws.com:8080/mastishq/"
   constructor(private http: HttpClient,private loadingCtrl: LoadingController) { }
   
   showLoader() {
