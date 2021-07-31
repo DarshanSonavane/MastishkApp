@@ -170,16 +170,14 @@ export class AppServiceService {
     return this.http.post(url,data , {headers : headers});
   }
 
-  /* getDoctorDetails = (userId:any , headers : any)=>{
-    let userId = localStorage.getItem('userId');
-    let url = this.baseUrl + "user/getDoctorDetlsById/";
-    return this.http.post(url,data , {headers : headers});
-  } */
+  getDoctorDetails = (userId:any , headers : any)=>{
+    let url = this.baseUrl + `user/getDoctorDetlsById?id=${userId}`;
+    return this.http.get(url, {headers : headers});
+  }
 
-  /* getMHPDetails = (userId:any , headers : any)=>{
-    let userId = localStorage.getItem('userId');
-    let url = this.baseUrl + "user/getMhpDetlsById/";
-    return this.http.post(url,data , {headers : headers});
-  } */
+  getMHPDetails = (userId:any , headers : any)=>{
+    let url = this.baseUrl + `user/getMhpDetlsById?id=${userId}`;
+    return this.http.get(url, {headers : headers});
+  }
 
 }

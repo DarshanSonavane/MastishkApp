@@ -82,10 +82,11 @@ export class DoctorProfilePage implements OnInit {
   clinic:any = "";
   clinicAddress:any = "";
   state:any = "";
-  districtId:any = "";
+  district:any = "";
   city:any = "";
   howManyPatientsPresent:any = "";
   selectedStateId:any = "";
+  id:any = "";
 
   constructor(private router :Router , public formBuilder: FormBuilder , public service :AppServiceService , public toastController : ToastController , public menu : MenuController) { 
     this.getStateList();
@@ -107,6 +108,7 @@ export class DoctorProfilePage implements OnInit {
   }
 
   ngOnInit() {
+    this.getDoctorDetails();
     this.doctorForm = this.formBuilder.group({
       regWithState : ['', Validators.compose([ Validators.pattern('[a-zA-Z]*'), Validators.required])],
       medicalRegNum : ['', Validators.compose([ Validators.pattern('[a-zA-Z]*'), Validators.required])],
@@ -120,6 +122,7 @@ export class DoctorProfilePage implements OnInit {
       district : ['', Validators.compose([Validators.required])],
       city : ['', Validators.compose([Validators.required])],
       howManyPatientsPresent : ['', Validators.compose([Validators.required])],
+      id : ['', Validators.compose([Validators.required])]
     })
   }
 
@@ -146,6 +149,7 @@ export class DoctorProfilePage implements OnInit {
       'Authorization' : token
     }
     this.service.showLoader();
+    console.log(this.doctorForm.value);
     this.service.updateDoctor(this.doctorForm.value,header).subscribe((res)=>{
       if(res){
         this.service.hideLoader();
@@ -155,7 +159,43 @@ export class DoctorProfilePage implements OnInit {
     },error=>{
       this.service.hideLoader();
     })
-    console.log(this.doctorForm.value);
+  }
+
+  getDoctorDetails = ()=>{
+    let userId = localStorage.getItem('userId'); 
+    let token = localStorage.getItem('token');
+    let header =  {
+      'Authorization' : token
+    }
+    this.service.showLoader();
+    this.service.getDoctorDetails(userId,header).subscribe((res)=>{
+      this.service.hideLoader();
+      if(res){
+        let doctorDetails = res;
+        console.log("doctorDetails",doctorDetails);
+        this.regWithState = parseInt(doctorDetails && doctorDetails['regWithState']);
+        this.medicalRegNum = doctorDetails && doctorDetails['medicalRegNum'];
+        this.speciality = doctorDetails && doctorDetails['speciality'];
+        this.selfProfileSummury = doctorDetails && doctorDetails['selfProfileSummury'];
+        this.associatedHospital = doctorDetails && doctorDetails['associatedHospital'];
+        this.resident = doctorDetails && doctorDetails['resident'];
+        this.clinic = doctorDetails && doctorDetails['clinic'];
+        this.clinicAddress = doctorDetails && doctorDetails['clinicAddress'];
+        this.state = doctorDetails && doctorDetails['state']['stateId'];
+        this.id = doctorDetails && doctorDetails['id']; 
+        if(this.state){
+          this.service.getAllDistrictsForState(this.state).subscribe((res)=>{
+            if(res){
+              this.districtsForState = res;
+              this.district = doctorDetails && doctorDetails['district']['districtId'];
+            }
+          })
+        }
+        this.city = doctorDetails && doctorDetails['city'];
+        this.howManyPatientsPresent = doctorDetails && doctorDetails['howManyPatientsPresent'];
+        console.log("-------",this.regWithState);
+      }
+    })
   }
 
 }

@@ -12,14 +12,17 @@
   <form [formGroup]="doctorForm" (ngSubmit)="submitDoctor()">
     <ion-card class="card">  
       <ion-card-content class="cardContent doctorProfile">
-      <div class="inputWrap">
-        <ion-input class="inputField" formControlName="regWithState" placeholder="Registered with which state" type="text" required></ion-input>
+        <div class="formWrap">
+          <ion-select placeholder="Registered with which state" [(ngModel)]="regWithState" formControlName="regWithState">
+            <ion-select-option *ngFor="let s of stateList" [value]="s.stateId">{{s.stateName}}</ion-select-option>
+          </ion-select>
         </div>
+        
       <div class="inputWrap">
-        <ion-input class="inputField" formControlName="medicalRegNum" placeholder="Medical Registration Number" type="text" required></ion-input>
+        <ion-input class="inputField" formControlName="medicalRegNum" [(ngModel)]="medicalRegNum" placeholder="Medical Registration Number" type="text" required></ion-input>
         </div>
         <div class="inputWrap">
-            <ion-select placeholder="Speciality" formControlName="speciality" class="customSelect">
+            <ion-select placeholder="Speciality" formControlName="speciality" [(ngModel)]="speciality" class="customSelect">
               <ion-select-option *ngFor="let s of specialityArr" [value]="s.value">{{s.name}}</ion-select-option>
             </ion-select>
         </div>
@@ -27,18 +30,18 @@
           <ion-textarea class="customTextarea" formControlName="speciality" placeholder="Educational Qualification" type="text" required></ion-textarea>
         </div> -->
         <div class="inputWrap">
-          <ion-input class="inputField" formControlName="associatedHospital" placeholder="Associated Hospital" type="text" required></ion-input>
+          <ion-input class="inputField" formControlName="associatedHospital" [(ngModel)]="associatedHospital" placeholder="Associated Hospital" type="text" required></ion-input>
         </div>
         <div class="inputWrap">
-          <ion-input class="inputField" formControlName="resident" placeholder="Residence" type="text" required></ion-input>
+          <ion-input class="inputField" formControlName="resident" [(ngModel)]="resident" placeholder="Residence" type="text" required></ion-input>
         </div>
         <div class="inputWrap">
-          <ion-select placeholder="Clinic" class="customSelect" formControlName="clinic">
+          <ion-select placeholder="Clinic" class="customSelect" formControlName="clinic" [(ngModel)]="clinic">
             <ion-select-option *ngFor="let c of clinicType" [value]="c.value">{{c.name}}</ion-select-option>
           </ion-select>
         </div>
         <div class="inputWrap">
-          <ion-input class="inputField" formControlName="clinicAddress" placeholder="Clinic's Address" type="text" required></ion-input>
+          <ion-input class="inputField" formControlName="clinicAddress" [(ngModel)]="clinicAddress" placeholder="Clinic's Address" type="text" required></ion-input>
         </div>
         <div class="formWrap">
           <ion-select placeholder="State" [(ngModel)]="state" formControlName="state" (ionChange)="onStateChange()">
@@ -51,13 +54,14 @@
           </ion-select>
         </div>
         <div class="inputWrap">
-          <ion-input class="inputField" formControlName="city" placeholder="City/Town" type="text" required></ion-input>
+          <ion-input class="inputField" formControlName="city" [(ngModel)]="city" placeholder="City/Town" type="text" required></ion-input>
         </div>
         <div class="inputWrap">
-          <ion-select formControlName="howManyPatientsPresent" placeholder="On an average how many patients present psychiatric(mental illness) symptoms?" class="customSelect">
+          <ion-select formControlName="howManyPatientsPresent" [(ngModel)]="howManyPatientsPresent" placeholder="On an average how many patients present psychiatric(mental illness) symptoms?" class="customSelect">
             <ion-select-option *ngFor="let p of patientCount" [value]="p.value">{{p.name}}</ion-select-option>
           </ion-select>
         </div>
+        <ion-input [(ngModel)]="id" formControlName="id" placeholder="Doctor Id" type="hidden" required></ion-input>
       </ion-card-content>
     </ion-card>
   

@@ -74,6 +74,7 @@ export class HealthWorkerPage implements OnInit {
   nameOfHospital:any = "";
   hospitalAddress:any = "";
   city:any = "";
+  id:any = "";
 
   selectedStateId:any = "";
 
@@ -97,7 +98,7 @@ export class HealthWorkerPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getHealthWorkerDetails();
     this.healthWorkerForm = this.formBuilder.group({
       state: ['', Validators.compose([Validators.required])],
       district: ['', Validators.compose([Validators.required])],
@@ -109,6 +110,7 @@ export class HealthWorkerPage implements OnInit {
       nameOfHospital: ['', Validators.compose([Validators.required])],
       hospitalAddress: ['', Validators.compose([Validators.required])],
       city: ['', Validators.compose([Validators.required])],
+      id : ['', Validators.compose([Validators.required])],
     })
   }
 
@@ -143,6 +145,38 @@ export class HealthWorkerPage implements OnInit {
       }
     },error=>{
       this.service.hideLoader();
+    })
+  }
+
+  getHealthWorkerDetails = () =>{
+    let userId = localStorage.getItem('userId'); 
+    let token = localStorage.getItem('token');
+    let header =  {
+      'Authorization' : token
+    }
+    this.service.getMHPDetails(userId,header).subscribe((res)=>{
+      if(res){
+        let mhpDetails = res;
+        console.log("mhpDetails",mhpDetails);
+        this.state = mhpDetails && mhpDetails['state']['stateId'];
+        if(this.state){
+          this.service.getAllDistrictsForState(this.state).subscribe((res)=>{
+            if(res){
+              this.districtsForState = res;
+              this.district = mhpDetails && mhpDetails['district']['districtId'];
+            }
+          })
+        }
+        this.piAm = mhpDetails && mhpDetails['piAm'];
+        this.highestEducation = mhpDetails && mhpDetails['highestEducation'];
+        this.registeredWith = mhpDetails && mhpDetails['registeredWith'];
+        this.resident = mhpDetails && mhpDetails['resident'];
+        this.currentlyWorking = mhpDetails && mhpDetails['currentlyWorking'];
+        this.nameOfHospital = mhpDetails && mhpDetails['nameOfHospital'];
+        this.hospitalAddress = mhpDetails && mhpDetails['hospitalAddress'];
+        this.city = mhpDetails && mhpDetails['city'];
+        this.id = mhpDetails && mhpDetails['id']; 
+      }
     })
   }
 }
