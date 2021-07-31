@@ -95,4 +95,8 @@ export class LoginPage implements OnInit {
   goToDashboard(){
     this.router.navigate(['/dashboard']);
   }
+
+  goToSelfScreening(){
+    this.router.navigate(['/self']);
+  }
 }

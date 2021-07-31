@@ -16,7 +16,7 @@ export class DoctorProfilePage implements OnInit {
   stateList:any = [];
   districtsForState:any = [];
 
-  specialityArr = [{
+  specialityArr:any = "";/* [{
     "name":"Psychiatrist",
     "value":"psychiatrist"
   },{
@@ -52,7 +52,7 @@ export class DoctorProfilePage implements OnInit {
   },{
     "name":"Other",
     "value":"Other"
-  }];
+  }]; */
 
   clinicType = [{
     "name":"Self",
@@ -109,6 +109,7 @@ export class DoctorProfilePage implements OnInit {
 
   ngOnInit() {
     this.getDoctorDetails();
+    this.getDoctorsSpecilaities();
     this.doctorForm = this.formBuilder.group({
       regWithState : ['', Validators.compose([ Validators.pattern('[a-zA-Z]*'), Validators.required])],
       medicalRegNum : ['', Validators.compose([ Validators.pattern('[a-zA-Z]*'), Validators.required])],
@@ -194,6 +195,14 @@ export class DoctorProfilePage implements OnInit {
         this.city = doctorDetails && doctorDetails['city'];
         this.howManyPatientsPresent = doctorDetails && doctorDetails['howManyPatientsPresent'];
         console.log("-------",this.regWithState);
+      }
+    })
+  }
+
+  getDoctorsSpecilaities = () => {
+    this.service.getSpacialityList().subscribe((res)=>{
+      if(res){
+        this.specialityArr = res;
       }
     })
   }

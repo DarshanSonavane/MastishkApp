@@ -180,4 +180,9 @@ export class AppServiceService {
     return this.http.get(url, {headers : headers});
   }
 
+  getSpacialityList = () =>{
+    let url = this.baseUrl + `utils/getSpacialityList`;
+    return this.http.get(url);
+  }
+
 }

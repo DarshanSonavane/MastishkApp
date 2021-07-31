@@ -186,7 +186,12 @@ export class UserProfilePage implements OnInit {
 
         this.selectedStateId = contactDetails?.state?.stateId || "";
         if(this.selectedStateId){
-          this.onStateChange();
+          this.service.getAllDistrictsForState(this.selectedStateId).subscribe((res)=>{
+            if(res){
+              this.districtsForState = res;
+              this.district = contactDetails?.district?.districtId || "";
+            }
+          })
         }
       }
     },error=>{
