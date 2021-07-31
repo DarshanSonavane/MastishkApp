@@ -40,53 +40,108 @@
     --border-color: var(--ion-primary-outline-btn);
     --color: var(--ion-color-primary-2);
 }
-
-.customCard.self{
-    background: #eeffd8 url(../../assets/self.svg) no-repeat bottom left / 65px;
+ion-grid.cardRow{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-left: -10px;
+    justify-content: center;
 }
-.customCard.doctor{
-    background: #fffce0 url(../../assets/doctor.svg) no-repeat  bottom left / 65px;
-}
-.customCard.mhp{
-    background: #deecff url(../../assets/mhp.svg) no-repeat  bottom left / 65px;
-}
-.customCard.hp{
-    background:#ffdede url(../../assets/nurse.svg) no-repeat  bottom left / 65px;
+ion-card.card{
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    position: relative;
+    transition: all 0.4s ease-in;
 }
 .customCard{
-    font-size: 1.2rem;
-    min-height: 100px;
-    padding: 5px 5px 5px 70px;
+    font-size: 1.1rem;
+    width: 100%;
+    height: 100%;
+    padding:0;
     display: flex;
-    align-items: flex-end;
-    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;    
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
-.dashboard ion-card{
-    margin: 0;
+.customCard img{
+    width: 60px;
 }
 .dashboard ion-grid{
     padding: 0;
 }
-.customCard.self span{
-    color: #4b8600;
-}
-.customCard.doctor span{
-    color: #736800;
-}
-.customCard.hp span{
-    color: #820000;
-}
-.customCard.mhp span{
-    color: #066b5d;
+.customCard span{
+    color: #000;
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 10px 10px 0 10px;
 }
 .toolbarBg{
     --background: rgb(8,8,84,1);
-    --background: linear-gradient(180deg, rgba(8,8,84,1) 0%, rgba(108,33,69,1) 50%, rgba(235,65,50) 100%);
     color: var(--color-white);
 }
-@media (max-width: 374px) {
+ion-card.card:before {
+    content: '';
+    background-color: rgba(26, 26, 26, 0.1);
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale(0.001, 0.001);
+  }
+  ion-card.card:focus {
+    outline: 0;
+    color: #fff;
+  }
+  ion-card.card:focus:before {
+    -webkit-animation: effect_dylan 0.8s ease-out;
+            animation: effect_dylan 0.8s ease-out;
+  }
+  @-webkit-keyframes effect_dylan {
+    50% {
+      transform: scale(1.5, 1.5);
+      opacity: 0;
+    }
+    99% {
+      transform: scale(0.001, 0.001);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0.001, 0.001);
+      opacity: 1;
+    }
+  }
+  @keyframes effect_dylan {
+    50% {
+      transform: scale(1.5, 1.5);
+      opacity: 0;
+    }
+    99% {
+      transform: scale(0.001, 0.001);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0.001, 0.001);
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 374px) {
+    ion-card.card{
+        width: 130px;
+        height: 130px;
+    }
+    .customCard img{
+        width: 50px;
+    }
     .customCard{
-        background-size: 50px;
-        padding-left: 65px;
+        font-size: 1rem;
     }
 }
