@@ -194,7 +194,7 @@ export class DoctorProfilePage implements OnInit {
         }
         this.city = doctorDetails && doctorDetails['city'];
         this.howManyPatientsPresent = doctorDetails && doctorDetails['howManyPatientsPresent'];
-        console.log("-------",this.regWithState);
+        console.log("---speciality----",this.speciality);
       }
     })
   }

@@ -23,7 +23,7 @@
         </div>
         <div class="inputWrap">
             <ion-select placeholder="Speciality" formControlName="speciality" [(ngModel)]="speciality" class="customSelect">
-              <ion-select-option *ngFor="let s of specialityArr" [value]="s.value">{{s.name}}</ion-select-option>
+              <ion-select-option *ngFor="let s of specialityArr" [value]="s">{{s}}</ion-select-option>
             </ion-select>
         </div>
         <!-- <div class="inputWrap">

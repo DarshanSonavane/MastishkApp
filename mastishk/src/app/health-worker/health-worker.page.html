@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar class="toolbarBg">
-    <ion-title>Health Worker Profile</ion-title>
+  <ion-toolbar>
+    <ion-title class="toolbarBg">Health Worker Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -48,9 +48,9 @@
         <ion-select-option *ngFor="let d of districtsForState" [value]="d.districtId" value="Y">{{d.districtName}}</ion-select-option>
       </ion-select>
     </div>
-    <div class="inputWrap">
+      <div class="inputWrap">
       <ion-input class="inputField" formControlName="city" placeholder="City/Town" [(ngModel)]="city" type="text" required></ion-input>
-    </div>
+      </div>
       <ion-input [(ngModel)]="id" formControlName="id" placeholder="MHP Id" type="hidden" required></ion-input>
   </ion-card-content>
 </ion-card>
