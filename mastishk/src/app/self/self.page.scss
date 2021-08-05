@@ -206,5 +206,8 @@ ion-item{
     font-size: 14px;
 }
 ion-item.item-radio-checked {
-    --background: rgb(198 198 255);
+    --background: rgb(198 228 255);
 }
+ion-item {
+    --ripple-color: #3ca2ff;
+  }
