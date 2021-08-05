@@ -112,32 +112,9 @@
     --padding-right: 0px;
 }
 
-.questions{
-    padding-left: 0;    
-    // list-style-position: inside
-    counter-reset: h3;    
-    list-style-type: none;
-}
-.questions li{
-    position: relative;
-    counter-increment: h3;
-}
-.questions li::before {
-    content: counter(h3) ".";
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-.questionLabel{
-    display: block;
-    padding-left: 30px;
-}
-.questions ion-card{
-    margin-top: 10px;
-}
-.questions .ion-radio{
-    --inner-border-width: 0;
-}
+// .questions .ion-radio{
+//     --inner-border-width: 0;
+// }
 .questions ion-radio{
     margin: 0 10px 0 0;
 }
@@ -145,8 +122,7 @@
     margin: 0;
 }
 .questions ion-item{
-    --min-height: 24px;
-    --padding-start: 0;
+    height: auto;
     --background-hover: none;
     margin-bottom: 10px;
 }
@@ -164,4 +140,71 @@ ion-list{
 .toolbarBg{
     --background: rgb(8,8,84,1);
     color: var(--color-white);
+}
+.numberCounts{
+    display: flex;
+    align-items: flex-end;
+}
+.backPage{
+    cursor: pointer;
+}
+.numberCounts .numbers{
+    flex: 1;
+    text-align: center;
+}
+.activeNo{
+    font-size: 20px;
+    font-weight: 600;
+}
+.devider{
+    margin: 0 3px;
+}
+.totalPageNo{
+    font-size: 14px;
+    color: #a1a1a1;
+}
+.pageSteps{
+    margin-top: 20px;
+    border-bottom: 1px solid #a1a1a1;
+}
+.pageSteps span{
+    height: 4px;
+    display: block;
+    transition: all .4s;
+    background: #080854;
+    position: relative;
+    margin-bottom: -1px;
+}
+.questionContainer{
+    margin-top: 30px;
+}
+.questionContainer p{
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+.questionContainer .infoTxt{
+    font-size: 13px;
+    color: #717171;
+    font-weight: normal;
+    margin-top: 10px;
+}
+.qstOptionContainer{
+    background: #fff;
+    padding: 16px;
+    margin: 30px -16px 20px -16px;
+    height: calc(100% - 255px);
+}
+.qstOptionFooter{
+    text-align: center;
+}
+ion-list{
+    background: transparent;
+}
+ion-item{
+    --background: rgb(240 240 240);
+    font-size: 14px;
+}
+ion-item.item-radio-checked {
+    --background: rgb(198 198 255);
 }
